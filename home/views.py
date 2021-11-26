@@ -19,4 +19,13 @@ def profile(request):
     return render(request,'profile.html')
 def search(request):
     #return HttpResponse("this is done suessfully")
-    return render(request,'profile.html')
+    return render(request,'search.html')
+def shop(request):
+    #return HttpResponse("this is done suessfully")
+    return render(request,'shop.html')
+def checkout(request):
+    #return HttpResponse("this is done suessfully")
+    return render(request,'checkout.html')
+def login(request):
+    #return HttpResponse("this is done suessfully")
+    return render(request,'login.html')

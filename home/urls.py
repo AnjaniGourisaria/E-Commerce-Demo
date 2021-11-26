@@ -25,7 +25,12 @@ urlpatterns = [
     path("electronic",views.electronic,name='electronic'),
     path("seacrh",views.search,name='search'),
     path("addcart",views.addcart,name='addcart'),
-    path("profile",views.profile,name='profile')
+    path("profile",views.profile,name='profile'),
+    path("shop",views.shop,name='shop'),
+    path("checkout",views.checkout,name='checkout'),
+    path("checkout",views.checkout,name='checkout'),
+    path("login",views.login,name='login'),
+    
 ]
 
 

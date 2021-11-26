@@ -1,0 +1,562 @@
+{% comment %} full username and password with registration {% endcomment %}
+{% comment %}
+
+<div class="materialContainer"
+   style="background-color: black;position: absolute;margin-top: 281px;left: 0px;margin-left: 647px;/*! border-right-style: solid; */border-radius: 15px;border-block-style: double;border-block-color: aqua;border-block-start-width: medium;/*! border: brown; */font-family: initial;font-style: italic;font-size: ;background-color: white;padding: 50px 52px;border-block-style: double;border-width: 8px;border-left-style: double;border-right-style: double;border-block-color: aqua;font-size: 15px;font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;">
+
+
+   <div class="box">
+
+      <div class="title" style="padding: 1px 106px;">LOGIN</div>
+
+      <div class="input">
+         <label for="name">Username</label>
+         <input type="text" name="name" id="name">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <label for="pass">Password</label>
+         <input type="password" name="pass" id="pass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="button login" style="padding: 1px 93px;">
+         <button style="width: 100%;border-radius: 7px;/*! padding: 1px 19px; */"><span>GO</span> <i
+               class="fa fa-check"></i></button>
+      </div>
+
+      <a href="" class="pass-forgot">Forgot your password?</a>
+
+   </div>
+
+   <div class="overbox">
+      <div class="material-button alt-2"><span class="shape"></span></div>
+
+      <div class="title" style="padding: 1px 106px;">REGISTER</div>
+
+      <div class="input">
+         <label for="regname">Username</label>
+         <input type="text" name="regname" id="regname">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <label for="regpass">Password</label>
+         <input type="password" name="regpass" id="regpass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="input">
+         <label for="reregpass">Repeat Password</label>
+         <input type="password" name="reregpass" id="reregpass">
+         <span class="spin"></span>
+      </div>
+
+      <div class="button" style="padding: 1px 93px;">
+         <button style="width: 100%;border-radius: 7px;/*! padding: 1px 19px; */"><span>NEXT</span></button>
+      </div>
+
+
+   </div>
+
+</div>
+<script>
+   $(function () {
+
+      $(".input input").focus(function () {
+
+         $(this).parent(".input").each(function () {
+            $("label", this).css({
+               "line-height": "18px",
+               "font-size": "18px",
+               "font-weight": "100",
+               "top": "0px"
+            })
+            $(".spin", this).css({
+               "width": "100%"
+            })
+         });
+      }).blur(function () {
+         $(".spin").css({
+            "width": "0px"
+         })
+         if ($(this).val() == "") {
+            $(this).parent(".input").each(function () {
+               $("label", this).css({
+                  "line-height": "60px",
+                  "font-size": "24px",
+                  "font-weight": "300",
+                  "top": "10px"
+               })
+            });
+
+         }
+      });
+
+      $(".button").click(function (e) {
+         var pX = e.pageX,
+            pY = e.pageY,
+            oX = parseInt($(this).offset().left),
+            oY = parseInt($(this).offset().top);
+
+         $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
+         $('.x-' + oX + '.y-' + oY + '').animate({
+            "width": "500px",
+            "height": "500px",
+            "top": "-250px",
+            "left": "-250px",
+
+         }, 600);
+         $("button", this).addClass('active');
+      })
+
+      $(".alt-2").click(function () {
+         if (!$(this).hasClass('material-button')) {
+            $(".shape").css({
+               "width": "100%",
+               "height": "100%",
+               "transform": "rotate(0deg)"
+            })
+
+            setTimeout(function () {
+               $(".overbox").css({
+                  "overflow": "initial"
+               })
+            }, 600)
+
+            $(this).animate({
+               "width": "140px",
+               "height": "140px"
+            }, 500, function () {
+               $(".box").removeClass("back");
+
+               $(this).removeClass('active')
+            });
+
+            $(".overbox .title").fadeOut(300);
+            $(".overbox .input").fadeOut(300);
+            $(".overbox .button").fadeOut(300);
+
+            $(".alt-2").addClass('material-buton');
+         }
+
+      })
+
+      $(".material-button").click(function () {
+
+         if ($(this).hasClass('material-button')) {
+            setTimeout(function () {
+               $(".overbox").css({
+                  "overflow": "hidden"
+               })
+               $(".box").addClass("back");
+            }, 200)
+            $(this).addClass('active').animate({
+               "width": "700px",
+               "height": "700px"
+            });
+
+            setTimeout(function () {
+               $(".shape").css({
+                  "width": "50%",
+                  "height": "50%",
+                  "transform": "rotate(45deg)"
+               })
+
+               $(".overbox .title").fadeIn(300);
+               $(".overbox .input").fadeIn(300);
+               $(".overbox .button").fadeIn(300);
+            }, 700)
+
+            $(this).removeClass('material-button');
+
+         }
+
+         if ($(".alt-2").hasClass('material-buton')) {
+            $(".alt-2").removeClass('material-buton');
+            $(".alt-2").addClass('material-button');
+         }
+
+      });
+
+   });
+</script>
+{% endcomment %}
+{% comment %} Wiht phone number /passwrod btn next and login with otp {% endcomment %}
+{% comment %}
+
+<body>
+   <!-- banner bg main start -->
+   <div class="banner_bg_main">
+      <!-- header top section start -->
+      <div class="container">
+         <div class="header_section_top">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="custom_menu" style="background-color: #051922;">
+                     <ul>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Gift Ideas</a></li>
+
+                        <li><a href="#">Consumer Service</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- header top section start -->
+      <!-- logo section start -->
+      <div class="logo_section">
+         <div class="container">
+            <div class="row">
+               <div class="col-sm-12">
+                  <div class="logo"><a href="index.html"><img src="static/images/logo.png"></a></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- logo section end -->
+      <!-- header section start -->
+      <div class="header_section">
+         <div class="container">
+            <div class="containt_main">
+               <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                  <a href="home">Home</a>
+                  <a href="fashion">Fashion</a>
+                  <a href="electronic">Electronic</a>
+                  <a href="jewellery">Jewellery</a>
+               </div>
+               <span class="toggle_icon" onclick="openNav()"><img src="static/images/toggle-icon.png"></span>
+               <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                     style="background-color: #051922;">All Categories
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="#">Antiques</a>
+                     <a class="dropdown-item" href="#">Art</a>
+                     <a class="dropdown-item" href="#">Baby</a>
+                     <a class="dropdown-item" href="#">Books</a>
+                     <a class="dropdown-item" href="#">Business &amp; Industrial</a>
+                     <a class="dropdown-item" href="#">Cameras &amp; Photo </a>
+                     <a class="dropdown-item" href="#">Cell Phones &amp; Accessories</a>
+                     <a class="dropdown-item" href="#">Clothing, Shoes &amp; Accessories</a>
+                     <a class="dropdown-item" href="#">Collectibles</a>
+                     <a class="dropdown-item" href="#">Computers/Tablets &amp; Networking</a>
+                     <a class="dropdown-item" href="#">Everything Else</a>
+                  </div>
+               </div>
+               <div class="main">
+                  <!-- Another variation with a button -->
+                  <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Search this blog">
+                     <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button"
+                           style="background-color: #f26522; border-color:#f26522 ">
+                           <i class="fa fa-search"></i>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+               <div class="header_box">
+                  <div class="lang_box ">
+                     <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <img src="/static/images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English
+                        <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                     </a>
+                     <div class="dropdown-menu ">
+                        <a href="#" class="dropdown-item">
+                           <img src="static/images/flag-france.png" class="mr-2" alt="flag">
+                           French
+                        </a>
+                     </div>
+                  </div>
+                  <div class="login_menu">
+                     <ul>
+                        <li><a href="addcart">
+                              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                              <span class="padding_10">Cart</span></a>
+                        </li>
+                        <li><a href="profile">
+                              <i class="fa fa-user" aria-hidden="true"></i>
+                              <span class="padding_10">SignIn|SignUp</span></a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- header section end -->
+      <!-- banner section start -->
+      <div class="banner_section layout_padding">
+         <div class="container">
+            <div id="my_slider" class="carousel slide" data-ride="carousel">
+               <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                           <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                           <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="carousel-item">
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
+                           <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                  <i class="fa fa-angle-left"></i>
+               </a>
+               <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                  <i class="fa fa-angle-right"></i>
+               </a>
+            </div>
+         </div>
+      </div>
+      <!-- banner section end -->
+   </div>
+   <!-- banner bg main end -->
+
+
+   <div class="materialContainer"
+      style="background-color: black;position: absolute;margin-top: 273px;left: -17px;margin-left: 650px;/*! border-right-style: solid; */border-radius: 15px;border-block-style: double;border-block-color: aqua;border-block-start-width: medium;/*! border: brown; */font-family: initial;font-style: italic;font-size: ;background-color: white;padding: 48px 28px;border-block-style: double;border-width: 8px;border-left-style: double;border-right-style: double;border-block-color: aqua;font-size: 15px;font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;background-color: #051922;color: aqua;">
+
+
+      <div class="box">
+
+         <div class="title" style="padding: 1px 106px;">LOGIN</div>
+
+         <label for="name">Phone No:</label>
+         <div class="input">
+
+            <input type="text" name="name" id="name" style="padding: 1px 32px;">
+            <span class="spin"></span>
+         </div>
+
+         <label for="pass">Password</label>
+         <div class="input">
+
+            <input type="password" name="pass" id="pass" style="padding: 1px 33px;">
+            <span class="spin"></span>
+         </div>
+
+
+
+
+
+      </div>
+
+      <div class="overbox">
+         <h1></h1>
+         <h1></h1>
+         <div class="material-button alt-2"><span class="shape"></span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+         <div class="button" style="padding: 1px 93px;">
+            <button style="width: 100%;border-radius: 7px;/*! padding: 1px 19px; */"><span>NEXT</span></button>
+         </div>
+      </div>
+
+   </div>
+   <script>
+      $(function () {
+
+         $(".input input").focus(function () {
+
+            $(this).parent(".input").each(function () {
+               $("label", this).css({
+                  "line-height": "18px",
+                  "font-size": "18px",
+                  "font-weight": "100",
+                  "top": "0px"
+               })
+               $(".spin", this).css({
+                  "width": "100%"
+               })
+            });
+         }).blur(function () {
+            $(".spin").css({
+               "width": "0px"
+            })
+            if ($(this).val() == "") {
+               $(this).parent(".input").each(function () {
+                  $("label", this).css({
+                     "line-height": "60px",
+                     "font-size": "24px",
+                     "font-weight": "300",
+                     "top": "10px"
+                  })
+               });
+
+            }
+         });
+
+         $(".button").click(function (e) {
+            var pX = e.pageX,
+               pY = e.pageY,
+               oX = parseInt($(this).offset().left),
+               oY = parseInt($(this).offset().top);
+
+            $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
+            $('.x-' + oX + '.y-' + oY + '').animate({
+               "width": "500px",
+               "height": "500px",
+               "top": "-250px",
+               "left": "-250px",
+
+            }, 600);
+            $("button", this).addClass('active');
+         })
+
+         $(".alt-2").click(function () {
+            if (!$(this).hasClass('material-button')) {
+               $(".shape").css({
+                  "width": "100%",
+                  "height": "100%",
+                  "transform": "rotate(0deg)"
+               })
+
+               setTimeout(function () {
+                  $(".overbox").css({
+                     "overflow": "initial"
+                  })
+               }, 600)
+
+               $(this).animate({
+                  "width": "140px",
+                  "height": "140px"
+               }, 500, function () {
+                  $(".box").removeClass("back");
+
+                  $(this).removeClass('active')
+               });
+
+               $(".overbox .title").fadeOut(300);
+               $(".overbox .input").fadeOut(300);
+               $(".overbox .button").fadeOut(300);
+
+               $(".alt-2").addClass('material-buton');
+            }
+
+         })
+
+         $(".material-button").click(function () {
+
+            if ($(this).hasClass('material-button')) {
+               setTimeout(function () {
+                  $(".overbox").css({
+                     "overflow": "hidden"
+                  })
+                  $(".box").addClass("back");
+               }, 200)
+               $(this).addClass('active').animate({
+                  "width": "700px",
+                  "height": "700px"
+               });
+
+               setTimeout(function () {
+                  $(".shape").css({
+                     "width": "50%",
+                     "height": "50%",
+                     "transform": "rotate(45deg)"
+                  })
+
+                  $(".overbox .title").fadeIn(300);
+                  $(".overbox .input").fadeIn(300);
+                  $(".overbox .button").fadeIn(300);
+               }, 700)
+
+               $(this).removeClass('material-button');
+
+            }
+
+            if ($(".alt-2").hasClass('material-buton')) {
+               $(".alt-2").removeClass('material-buton');
+               $(".alt-2").addClass('material-button');
+            }
+
+         });
+
+      });
+   </script>
+
+
+
+   <!-- jewellery  section end -->
+
+   <!-- footer section start -->
+   <div class="footer_section layout_padding" style="background-color: #051922;">
+      <div class="container">
+         <div class="footer_logo"><a href="index.html"><img src="static/images/footer-logo.png"></a></div>
+         <div class="input_bt">
+            <input type="email" class="mail_bt" placeholder="Your Email" name="Your Email">
+            <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
+         </div>
+         <div class="footer_menu">
+            <ul>
+               <li><a href="#">Best Sellers</a></li>
+               <li><a href="#">Gift Ideas</a></li>
+               <li><a href="#">Customer Service</a></li>
+            </ul>
+         </div>
+         <div class="location_main">Help Line Number : <a href="#">+91 1800 1200 1200</a></div>
+      </div>
+   </div>
+   <!-- footer section end -->
+   <!-- copyright section start -->
+   <div class="copyright_section" style="background-color: #051922;">
+      <div class="container">
+         <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design"> Html Temps </a>
+         </p>
+      </div>
+   </div>
+   <!-- copyright section end -->
+   <!-- Javascript files-->
+   <script src="static/js/jquery.min.js"></script>
+   <script src="static/js/popper.min.js"></script>
+   <script src="static/js/bootstrap.bundle.min.js"></script>
+   <script src="static/js/jquery-3.0.0.min.js"></script>
+   <script src="static/js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="static/js/custom.js"></script>
+   <script>
+      function openNav() {
+         document.getElementById("mySidenav").style.width = "250px";
+      }
+
+      function closeNav() {
+         document.getElementById("mySidenav").style.width = "0";
+      }
+   </script>
+
+
+</body>
+{% endcomment %}

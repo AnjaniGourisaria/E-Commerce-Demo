@@ -1,184 +1,76 @@
 {% extends 'base.html' %}
 {% block title %}Profile {% endblock title %}
 {% block body %}
-<div class="materialContainer" style="background-color: black;position: absolute;margin-top: 281px;left: 0px;margin-left: 647px;/*! border-right-style: solid; */border-radius: 15px;border-block-style: double;border-block-color: aqua;border-block-start-width: medium;/*! border: brown; */font-family: initial;font-style: italic;font-size: ;background-color: white;padding: 50px 52px;border-block-style: double;border-width: 8px;border-left-style: double;border-right-style: double;border-block-color: aqua;font-size: 15px;font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif;">
+<div class="container-fluid">
+   <div class="container">
+      <h2 class="text-center" id="title">SignUp|SignIn</h2>
+      <p class="text-center">
+         <small id="passwordHelpInline" class="text-muted"></a>.</small>
+      </p>
+      <hr>
+      <div class="row">
+         <div class="col-md-5">
+            <form role="form" method="post" action="">
+               <fieldset>
+                  <p class="text-uppercase pull-center"> SIGN UP.</p>
+                  <div class="form-group">
+                     <input type="text" name="username" id="username" class="form-control input-lg"
+                        placeholder="username">
+                  </div>
 
+                  <div class="form-group">
+                     <input type="email" name="email" id="email" class="form-control input-lg"
+                        placeholder="Email Address">
+                  </div>
+                  <div class="form-group">
+                     <input type="password" name="password" id="password" class="form-control input-lg"
+                        placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                     <input type="password" name="reppassword" id="reppassword" class="form-control input-lg"
+                        placeholder="Verify Password">
+                  </div>
+                  <div class="form-check">
+                     <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                        By Clicking register you're agree to our policy & terms
+                     </label>
+                  </div>
+                  <div>
+                     <input type="submit" class="btn btn-lg btn-primary   value=" Register">
+                  </div>
+               </fieldset>
+            </form>
+         </div>
 
-   <div class="box">
+         <div class="col-md-2">
+         </div>
+         <div class="col-md-5">
+         
+            <form role="form" method="post" action="login">
+            {% csrf_token %}
+               <fieldset>
+                  <p class="text-uppercase"> Login using your account: </p>
 
-      <div class="title" style="padding: 1px 106px;">LOGIN</div>
+                  <div class="form-group">
+                     <input type="email" name="username" id="username" class="form-control input-lg"
+                        placeholder="username">
+                  </div>
+                  <div class="form-group">
+                     <input type="password" name="password" id="password" class="form-control input-lg"
+                        placeholder="Password">
+                  </div>
+                  <div>
+                     <a href="login" ><input href="login" type="submit" class="btn btn-md" value="Sign In"></a>
+                  </div>
 
-      <div class="input">
-         <label for="name">Username</label>
-         <input type="text" name="name" id="name">
-         <span class="spin"></span>
+               </fieldset>
+            </form>
+         </div>
       </div>
-
-      <div class="input">
-         <label for="pass">Password</label>
-         <input type="password" name="pass" id="pass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="button login" style="padding: 1px 93px;">
-         <button style="width: 100%;border-radius: 7px;/*! padding: 1px 19px; */"><span>GO</span> <i class="fa fa-check"></i></button>
-      </div>
-
-      <a href="" class="pass-forgot">Forgot your password?</a>
-
    </div>
-
-   <div class="overbox">
-      <div class="material-button alt-2"><span class="shape"></span></div>
-
-      <div class="title" style="padding: 1px 106px;">REGISTER</div>
-
-      <div class="input">
-         <label for="regname">Username</label>
-         <input type="text" name="regname" id="regname">
-         <span class="spin"></span>
-      </div>
-
-      <div class="input">
-         <label for="regpass">Password</label>
-         <input type="password" name="regpass" id="regpass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="input">
-         <label for="reregpass">Repeat Password</label>
-         <input type="password" name="reregpass" id="reregpass">
-         <span class="spin"></span>
-      </div>
-
-      <div class="button" style="padding: 1px 93px;">
-         <button style="width: 100%;border-radius: 7px;/*! padding: 1px 19px; */"><span>NEXT</span></button>
-      </div>
-
-
-   </div>
-
+   <p class="text-center">
+      <small id="passwordHelpInline" class="text-muted"> Blah.. </a></small>
+   </p>
 </div>
-<script>
-$(function() {
-
-   $(".input input").focus(function() {
-
-      $(this).parent(".input").each(function() {
-         $("label", this).css({
-            "line-height": "18px",
-            "font-size": "18px",
-            "font-weight": "100",
-            "top": "0px"
-         })
-         $(".spin", this).css({
-            "width": "100%"
-         })
-      });
-   }).blur(function() {
-      $(".spin").css({
-         "width": "0px"
-      })
-      if ($(this).val() == "") {
-         $(this).parent(".input").each(function() {
-            $("label", this).css({
-               "line-height": "60px",
-               "font-size": "24px",
-               "font-weight": "300",
-               "top": "10px"
-            })
-         });
-
-      }
-   });
-
-   $(".button").click(function(e) {
-      var pX = e.pageX,
-         pY = e.pageY,
-         oX = parseInt($(this).offset().left),
-         oY = parseInt($(this).offset().top);
-
-      $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-      $('.x-' + oX + '.y-' + oY + '').animate({
-         "width": "500px",
-         "height": "500px",
-         "top": "-250px",
-         "left": "-250px",
-
-      }, 600);
-      $("button", this).addClass('active');
-   })
-
-   $(".alt-2").click(function() {
-      if (!$(this).hasClass('material-button')) {
-         $(".shape").css({
-            "width": "100%",
-            "height": "100%",
-            "transform": "rotate(0deg)"
-         })
-
-         setTimeout(function() {
-            $(".overbox").css({
-               "overflow": "initial"
-            })
-         }, 600)
-
-         $(this).animate({
-            "width": "140px",
-            "height": "140px"
-         }, 500, function() {
-            $(".box").removeClass("back");
-
-            $(this).removeClass('active')
-         });
-
-         $(".overbox .title").fadeOut(300);
-         $(".overbox .input").fadeOut(300);
-         $(".overbox .button").fadeOut(300);
-
-         $(".alt-2").addClass('material-buton');
-      }
-
-   })
-
-   $(".material-button").click(function() {
-
-      if ($(this).hasClass('material-button')) {
-         setTimeout(function() {
-            $(".overbox").css({
-               "overflow": "hidden"
-            })
-            $(".box").addClass("back");
-         }, 200)
-         $(this).addClass('active').animate({
-            "width": "700px",
-            "height": "700px"
-         });
-
-         setTimeout(function() {
-            $(".shape").css({
-               "width": "50%",
-               "height": "50%",
-               "transform": "rotate(45deg)"
-            })
-
-            $(".overbox .title").fadeIn(300);
-            $(".overbox .input").fadeIn(300);
-            $(".overbox .button").fadeIn(300);
-         }, 700)
-
-         $(this).removeClass('material-button');
-
-      }
-
-      if ($(".alt-2").hasClass('material-buton')) {
-         $(".alt-2").removeClass('material-buton');
-         $(".alt-2").addClass('material-button');
-      }
-
-   });
-
-});
-</script>
-
 {% endblock body %}
