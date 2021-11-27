@@ -2,6 +2,7 @@
 {% block title %}Profile {% endblock title %}
 {% block body %}
 <div class="container-fluid">
+
    <div class="container">
       <h2 class="text-center" id="title">SignUp|SignIn</h2>
       <p class="text-center">
@@ -10,34 +11,45 @@
       <hr>
       <div class="row">
          <div class="col-md-5">
-            <form role="form" method="post" action="">
+
+         {% comment %} Registration_form 
+         if request.method == "POST":
+        if request.POST.get('submit') == 'sign_in':
+            # your sign in logic goes here
+        elif request.POST.get('submit') == 'sign_up':
+            # your sign up logic goes here
+         {% endcomment %}
+            <form role="form" method="post" action="profile">
+            {% csrf_token %}
                <fieldset>
                   <p class="text-uppercase pull-center"> SIGN UP.</p>
                   <div class="form-group">
                      <input type="text" name="username" id="username" class="form-control input-lg"
-                        placeholder="username">
+                        placeholder="username" required>
                   </div>
 
                   <div class="form-group">
                      <input type="email" name="email" id="email" class="form-control input-lg"
-                        placeholder="Email Address">
+                        placeholder="Email Address" required>
                   </div>
                   <div class="form-group">
                      <input type="password" name="password" id="password" class="form-control input-lg"
-                        placeholder="Password">
+                        placeholder="Password" required>
                   </div>
                   <div class="form-group">
                      <input type="password" name="reppassword" id="reppassword" class="form-control input-lg"
-                        placeholder="Verify Password">
+                        placeholder="Verify Password" required>
                   </div>
+                  {% comment %}  
                   <div class="form-check">
                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
+                        <input type="checkbox" class="form-check-input" required>
                         By Clicking register you're agree to our policy & terms
                      </label>
                   </div>
+                  {% endcomment %}
                   <div>
-                     <input type="submit" class="btn btn-lg btn-primary   value=" Register">
+                     <input type="submit" class="btn btn-lg btn-primary"   value="sign_up">
                   </div>
                </fieldset>
             </form>
@@ -46,22 +58,29 @@
          <div class="col-md-2">
          </div>
          <div class="col-md-5">
-         
+         {% comment %} Login_Form {% endcomment %}
+
             <form role="form" method="post" action="login">
             {% csrf_token %}
                <fieldset>
                   <p class="text-uppercase"> Login using your account: </p>
 
                   <div class="form-group">
-                     <input type="email" name="username" id="username" class="form-control input-lg"
-                        placeholder="username">
+                     <input type="username" name="usernamelog" id="usernamelog" class="form-control input-lg"
+                        placeholder="username" maxlength="5" >
                   </div>
+                  {% comment %} 
                   <div class="form-group">
-                     <input type="password" name="password" id="password" class="form-control input-lg"
+                     <input type="text" name="phonelog" id="phonelog" class="form-control input-lg"
+                        placeholder="Mobile Number" maxlength="10" pattern="\d{10}" title="You can enter only 10 digits...">
+                  </div>
+                   {% endcomment %}
+                  <div class="form-group">
+                     <input type="password" name="passwordlog" id="passwordlog" class="form-control input-lg"
                         placeholder="Password">
                   </div>
                   <div>
-                     <a href="login" ><input href="login" type="submit" class="btn btn-md" value="Sign In"></a>
+                     <input type="submit" class="btn btn-lg btn-primary" value="sign_in">
                   </div>
 
                </fieldset>
@@ -69,7 +88,10 @@
          </div>
       </div>
    </div>
+
+
    <p class="text-center">
+
       <small id="passwordHelpInline" class="text-muted"> Blah.. </a></small>
    </p>
 </div>
