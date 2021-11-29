@@ -54,7 +54,7 @@ def sign_up(request):
                 else:
                     user = User.objects.create_user(username=username,email=email,password=password)
                     user.save();
-                    return redirect('login')       
+                    return redirect('/')       
             else:
                 messages.error(request ,"Password not matched")
                 return redirect('sign_up')
@@ -78,7 +78,7 @@ def sign_in(request):
             messages.error(request,'Invailed credentials')
             return redirect('sign_in')
     else:
-        return render(request,'sign_in.html')
+        return render(request, 'sign_in.html')
 
     
  # return HttpResponse("this is done suessfully")
@@ -100,5 +100,10 @@ def checkout(request):
 
 
 def login(request):
-    # return HttpResponse("this is done suessfully")
-    return render(request, 'login.html')
+    return HttpResponse("this is done suessfully")
+    # if request.method == 'POST':
+    # else:
+    #     HttpResponse('404 Not Found')
+def log_out(request):
+        logout(request)
+        return redirect('/')

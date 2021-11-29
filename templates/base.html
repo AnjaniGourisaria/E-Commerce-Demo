@@ -150,7 +150,7 @@ document.write(" ")
                      <div class="dropdown-menu ">
                         <a href="#" class="dropdown-item">
                            <img src="static/images/flag-france.png" class="mr-2" alt="flag">
-                           French
+                           Hindi
                         </a>
                      </div>
                   </div>
@@ -158,12 +158,17 @@ document.write(" ")
                      <ul>
                         <li><a href="addcart">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
+                              <span class="padding">Cart</span></a>
                         </li>
-                        <li><a href="sign_up">
-                              <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">SignIn|SignUp</span></a>
-                        </li>
+                        <li>
+                              
+                              {% if user.is_authenticated %}
+                              <a href="login" ><i class="fa fa-user" aria-hidden="true"></i><span class="padding_10">{{user.username }}</span></a>
+                              <a href="logout"><i class="fa fa-sign-out" aria-hidden="true" style="padding: 1px 7px;"></i></a>
+                              {% else %}
+                              <a href="sign_up"> <span class="padding_10">SignIn</span></a><a href="sign_in">|SignUp</span></a>
+                              {% endif %}
+                           </li>
                      </ul>
                   </div>
                </div>
