@@ -25,11 +25,11 @@ urlpatterns = [
     path("electronic",views.electronic,name='electronic'),
     path("seacrh",views.search,name='search'),
     path("addcart",views.addcart,name='addcart'),
-    path("profile",views.profile,name='profile'),
+    path("sign_up",views.sign_up,name='sign_up'),
     path("shop",views.shop,name='shop'),
     path("checkout",views.checkout,name='checkout'),
-    path("checkout",views.checkout,name='checkout'),
     path("login",views.login,name='login'),
+    path("sign_in",views.sign_in,name='sign_in'),
     
 ]
 

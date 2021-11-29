@@ -10,6 +10,7 @@
    <!-- mobile metas -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
    <!-- site metas -->
    <title> {% block title %} Home {% endblock title %}| The Indian Store </title>
    <meta name="keywords" content="">
@@ -44,6 +45,10 @@
       <!-- Manual css -->
    <link rel="stylesheet" href="static/css/Auth.css">
 
+   
+   
+   
+
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -53,22 +58,21 @@
       <!-- End Of my css -->
 
 </head>
-
 <body>
-{% for message in messages  %}
+   {% for message in messages %}
    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-  <strong>Message: </strong> {{ message }}
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-{% endfor %}
+      <strong>Holy guacamole!</strong> {{message}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
  <script>
 document.write(" ")
-</script>
+</script> 
 <noscript>Your browser does not support JavaScript!</noscript> 
    <!-- banner bg main start -->
    <div class="banner_bg_main">
       <!-- header top section start -->
-      <div class="container">
+      <div class="container" style="margin-bottom: -36px;">
          <div class="header_section_top">
             <div class="row">
                <div class="col-sm-12">
@@ -101,7 +105,7 @@ document.write(" ")
          <div class="container">
             <div class="containt_main">
                <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                   <a href="home">Home</a>
                   <a href="shop">Shop</a>
                   <a href=""></a>
@@ -110,9 +114,7 @@ document.write(" ")
                </div>
                <span class="toggle_icon" onclick="openNav()"><img src="static/images/toggle-icon.png"></span>
                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                     style="background-color: #051922;">All Categories
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #051922;">All Categories
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                      <a class="dropdown-item" href="#">Antiques</a>
@@ -133,16 +135,15 @@ document.write(" ")
                   <div class="input-group">
                      <input type="text" class="form-control" placeholder="Search this blog">
                      <div class="input-group-append">
-                        <button class="btn btn-secondary" type="button"
-                           style="background-color: #f26522; border-color:#f26522 ">
-                           <i class="fa fa-search"></i>
+                        <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                           <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                      </div>
                   </div>
                </div>
                <div class="header_box">
                   <div class="lang_box ">
-                     <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                     <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true" style="padding: 7px 11px;">
                         <img src="/static/images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English
                         <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
                      </a>
@@ -159,7 +160,7 @@ document.write(" ")
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                               <span class="padding_10">Cart</span></a>
                         </li>
-                        <li><a href="profile">
+                        <li><a href="sign_up">
                               <i class="fa fa-user" aria-hidden="true"></i>
                               <span class="padding_10">SignIn|SignUp</span></a>
                         </li>
@@ -175,7 +176,7 @@ document.write(" ")
          <div class="container">
             <div id="my_slider" class="carousel slide" data-ride="carousel">
                <div class="carousel-inner">
-                  <div class="carousel-item active">
+                  <div class="carousel-item">
                      <div class="row">
                         <div class="col-sm-12">
                            <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
@@ -183,7 +184,7 @@ document.write(" ")
                         </div>
                      </div>
                   </div>
-                  <div class="carousel-item">
+                  <div class="carousel-item active">
                      <div class="row">
                         <div class="col-sm-12">
                            <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
@@ -201,10 +202,10 @@ document.write(" ")
                   </div>
                </div>
                <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
-                  <i class="fa fa-angle-left"></i>
+                  <i class="fa fa-angle-left" aria-hidden="true"></i>
                </a>
                <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
-                  <i class="fa fa-angle-right"></i>
+                  <i class="fa fa-angle-right" aria-hidden="true"></i>
                </a>
             </div>
          </div>
@@ -212,9 +213,9 @@ document.write(" ")
       <!-- banner section end -->
    </div>
    <!-- banner bg main end -->
-   {% block body %}
-
-   {% endblock body %}
+   
+{% block body %}
+{% endblock body %}
 
    <!-- jewellery  section end -->
 
@@ -262,6 +263,7 @@ document.write(" ")
          document.getElementById("mySidenav").style.width = "0";
       }
    </script>
-</body>
 
+
+</div></div></body>
 </html>
