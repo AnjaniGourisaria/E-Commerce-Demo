@@ -270,6 +270,9 @@
 	  box-sizing: border-box;
 	}
 </style>
+{% for message in messages %}
+   <h5 class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" ><b>Hey! :</b1>{{message}}<h5>
+ {% endfor %}
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 	  <!-- Tabs Titles -->

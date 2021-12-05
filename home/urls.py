@@ -32,7 +32,7 @@ urlpatterns = [
     path("login",views.login,name='login'),
     path("sign_in",views.sign_in,name='sign_in'),
     path("log_out",views.log_out,name='log_out'),
-    
+    path("contactus",views.contactus,name='contactus')
 ]
 
 

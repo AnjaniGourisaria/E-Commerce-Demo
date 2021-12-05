@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"
-   style="scrollbar-color: black aqua;scrollbar-width: thin;scroll-snap-type: both;scroll-behavior: smooth;">
+style="scrollbar-color: black aqua;scrollbar-width: thin;scroll-snap-type: both;scroll-behavior: smooth;font-size: large;">
 
 <head>
    <!-- basic -->
@@ -20,6 +20,26 @@
    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
    <!-- style css -->
    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+   {% comment %} for shop.html {% endcomment %}
+   <link type="text/css" rel="stylesheet" href="static/csss/style.css"/>
+   {% comment %} <!-- Google font -->
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
+
+   <!-- Bootstrap -->
+   <link type="text/css" rel="stylesheet" href="static/csss/bootstrap.min.css"/>
+
+   <!-- Slick -->
+   <link type="text/css" rel="stylesheet" href="static/csss/slick.css"/>
+   <link type="text/css" rel="stylesheet" href="static/csss/slick-theme.css"/>
+
+   <!-- nouislider -->
+   <link type="text/css" rel="stylesheet" href="static/csss/nouislider.min.css"/>
+
+   <!-- Font Awesome Icon -->
+   {% comment %} <link rel="stylesheet" href="static/csss/font-awesome.min.css"> {% endcomment %}
+
+   <!-- Custom stlylesheet -->
+   {% comment %} end here {% endcomment %}
    {% comment %}<link rel="stylesheet" type="text/css" href="static/css/userAuth.min.css"> {% endcomment %}
    <!-- Responsive-->
    <link rel="stylesheet" href="static/css/responsive.css">
@@ -32,9 +52,10 @@
    <!-- fonts -->
    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
    <!-- font awesome is  -->
-   <link rel="stylesheet" type="text/css"
+ <link rel="stylesheet" type="text/css"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <!--  -->
+   <!--  --> 
+
    <!-- owl stylesheets -->
    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
       rel="stylesheet">
@@ -45,6 +66,21 @@
       <!-- Manual css -->
    <link rel="stylesheet" href="static/css/Auth.css">
 
+<!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
+  rel="stylesheet"
+/>
    
    
    
@@ -59,12 +95,7 @@
 
 </head>
 <body>
-   {% for message in messages %}
-   <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-      <strong>Hey! :</strong> {{message}}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
+  
  <script>
 document.write(" ")
 </script> 
@@ -94,7 +125,7 @@ document.write(" ")
          <div class="container">
             <div class="row">
                <div class="col-sm-12">
-                  <div class="logo"><a href="index.html"><img src="static/images/logo.png"></a></div>
+                  <div class="logo"><a href="home"><img src="static/images/logo.png"></a></div>
                </div>
             </div>
          </div>
@@ -108,7 +139,7 @@ document.write(" ")
                   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
                   <a href="home">Home</a>
                   <a href="shop">Shop</a>
-                  <a href=""></a>
+                  <a href="contactus">Contact Us</a>
                   <a href=""></a>
                   <a href=""></a>
                </div>
@@ -149,24 +180,28 @@ document.write(" ")
                      </a>
                      <div class="dropdown-menu ">
                         <a href="#" class="dropdown-item">
-                           <img src="static/images/flag-france.png" class="mr-2" alt="flag">
+                           <i class="flag flag-india"></i>
                            Hindi
                         </a>
                      </div>
                   </div>
                   <div class="login_menu">
                      <ul>
-                        <li><a href="addcart">
+                        <li><a href="#">
+                              {% if user.is_authenticated %}
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                              <span class="padding">Cart</span></a>
+                              <a href="addcart"> Cart</a>
+                              {% else %}
+                              <span></span>
+                              {% endif %}
                         </li>
                         <li>
                               
                               {% if user.is_authenticated %}
                               <a href="login" ><i class="fa fa-user" aria-hidden="true"></i><span class="padding_10">{{user.username }}</span></a>
-                              <a href="logout"><i class="fa fa-sign-out" aria-hidden="true" style="padding: 1px 7px;"></i></a>
+                              <a href="log_out"><i class="fa fa-sign-out" aria-hidden="true" style="padding: 1px 7px;"></i></a>
                               {% else %}
-                              <a href="sign_up"> <span class="padding_10">SignIn</span></a><a href="sign_in">|SignUp</span></a>
+                              <a href="sign_in"> <span class="padding_10">SignIn</span></a><span>|</span><a href="sign_up">SignUp</span></a>
                               {% endif %}
                            </li>
                      </ul>
@@ -224,38 +259,107 @@ document.write(" ")
 
    <!-- jewellery  section end -->
 
-   <!-- footer section start -->
-   <div class="footer_section layout_padding" style="background-color: #051922;">
-      <div class="container">
-         <div class="footer_logo"><a href="index.html"><img src="static/images/footer-logo.png"></a></div>
-         <div class="input_bt">
-            <input type="email" class="mail_bt" placeholder="Your Email" name="Your Email">
-            <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
+   <footer id="footer">
+      <!-- top footer -->
+      <div class="section">
+         <!-- container -->
+         <div class="container">
+            <!-- row -->
+            <div class="row">
+               <div class="col-md-3 col-xs-6">
+                  <div class="footer">
+                     <h3 class="footer-title">About Us</h3>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+                     <ul class="footer-links">
+                        <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                        <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+                        <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="col-md-3 col-xs-6">
+                  <div class="footer">
+                     <h3 class="footer-title">Categories</h3>
+                     <ul class="footer-links">
+                        <li><a href="#">Hot deals</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Cameras</a></li>
+                        <li><a href="#">Accessories</a></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="clearfix visible-xs"></div>
+
+               <div class="col-md-3 col-xs-6">
+                  <div class="footer">
+                     <h3 class="footer-title">Information</h3>
+                     <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="contactus">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Orders and Returns</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                     </ul>
+                  </div>
+               </div>
+
+               <div class="col-md-3 col-xs-6">
+                  <div class="footer">
+                     <h3 class="footer-title">Service</h3>
+                     <ul class="footer-links">
+                        <li><a href="sign_in">My Account</a></li>
+                        <li><a href="addcart">View Cart</a></li>
+                        <li><a href="shop">Wishlist</a></li>
+                        <li><a href="#">Track My Order</a></li>
+                        <li><a href="help">Help</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <!-- /row -->
          </div>
-         <div class="footer_menu">
-            <ul>
-               <li><a href="#">Best Sellers</a></li>
-               <li><a href="#">Gift Ideas</a></li>
-               <li><a href="#">Customer Service</a></li>
-            </ul>
+         <!-- /container -->
+      </div>
+      <!-- /top footer -->
+
+      <!-- bottom footer -->
+      <div id="bottom-footer" class="section">
+         <div class="container">
+            <!-- row -->
+            <div class="row">
+               <div class="col-md-12 text-center">
+                  <ul class="footer-payments">
+                     <li><a href="https://www.visa.co.in"><i class="fab fa-cc-visa"></i></a></li>
+                     <li><a href="https://www.paypal.com"><i class="fab fa-paypal"></i></a></li>
+                     <li><a href="https://www.mastercard.co.in"><i class="fab fa-cc-mastercard"></i></a></li>
+                     <li><a href="https://www.discover.com"><i class="fab fa-cc-discover"></i></a></li>
+                     <li><a href="https://www.americanexpress.com"><i class="fab fa-cc-amex"></i>
+                  </ul>
+                  <span class="copyright">
+                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  </span>
+               </div>
+            </div>
+               <!-- /row -->
          </div>
-         <div class="location_main">Help Line Number : <a href="#">+91 1800 1200 1200</a></div>
+         <!-- /container -->
       </div>
-   </div>
-   <!-- footer section end -->
-   <!-- copyright section start -->
-   <div class="copyright_section" style="background-color: #051922;">
-      <div class="container">
-         <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design"> Html Temps </a></p>
-      </div>
-   </div>
-   <!-- copyright section end -->
+      <!-- /bottom footer -->
+   </footer>
+   <!-- /FOOTER -->
+   
    <!-- Javascript files-->
    <script src="static/js/jquery.min.js"></script>
    <script src="static/js/popper.min.js"></script>
    <script src="static/js/bootstrap.bundle.min.js"></script>
    <script src="static/js/jquery-3.0.0.min.js"></script>
    <script src="static/js/plugin.js"></script>
+   
    <!-- sidebar -->
    <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
    <script src="static/js/custom.js"></script>

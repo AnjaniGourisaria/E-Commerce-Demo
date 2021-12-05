@@ -127,6 +127,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
     ]
-MESSAGE_TAGS = {
-    messages.ERROR: 'danger'
-}
+
+# MESSAGE_TAGS = {
+#     messages.ERROR: 'danger'
+# }
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
