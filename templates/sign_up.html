@@ -269,13 +269,26 @@
 	* {
 	  box-sizing: border-box;
 	}
+.form-control
+	{
+		width: 255px;
+		margin-left: 95px;
+		border-radius: 19px;
+border-block-color: aqua;
+    border-block-end-color: aqua;
+border-block-end-color: aqua;
+margin-bottom: -12px;
+	} 
+	#id_password2{
+	margin-bottom: 3px;
+	}
 </style>
-{% for message in messages %}
+{% comment %} {% for message in messages %}
 <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
    <strong>Hey! :</strong> <span>{{message}}</span>
    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
  </div>
- {% endfor %}
+ {% endfor %} {% endcomment %}
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 	  <!-- Tabs Titles -->
@@ -284,19 +297,27 @@
   
 	  <!-- Icon -->
 	  <div class="fadeIn first">
-		<img src="#" id="icon" alt="User Icon" />
+		<img src="#" id="icon" alt="" />
 	  </div>
   
 	  <!-- SignUP Form -->
-	  <form role="form" method='POST' action="sign_up">
+	 <!-- <form role="form" method='POST' action="sign_up">
 		  {% csrf_token %}
 		<input class='form1' type="text" id="username" name="username" class="fadeIn second" placeholder="Username" required pattern="[A-Za-z]{6,20}" title="Only Use letter 6 to 20">
 		<input class='form1' type="email" id="email" name="email" class="fadeIn third"  placeholder="Email Address" required>
 		<input class='form1' type="password" id="password" name="password" class="fadeIn fourth"  placeholder="Password.." title="Requires 8-16 alpahnumeric for password " required>{% comment %} pattern="[A-Za-z0-9]{8,16}" {% endcomment %}
 		<input class='form1' type="password" id="reppassword" name="reppassword" class="fadeIn fifth" placeholder="Re-password.." title="Requires 8-16 alpahnumeric for password " required>{% comment %} pattern="[A-Za-z0-9]{8,16}" {% endcomment %}
 		<input class='form1' type="submit" class="fadeIn sixth" value="Sign Up">
+	  </form> -->
+	  <form role="form" method='POST' action="sign_up">
+{% csrf_token %}
+		{% for fm in form %}
+		<div class="form-group mb-3">
+			{{ fm.label_tag }} {{fm}}<small class="text-danger">{{ fm.errors|striptags}}</small>
+		</div>
+		{% endfor %}
+		<input type='submit' value="Sign Up" class='btn-btn-primary'>
 	  </form>
-	  
 
 
 	  <!-- Remind Passowrd -->

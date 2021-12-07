@@ -270,9 +270,9 @@
 	  box-sizing: border-box;
 	}
 </style>
-{% for message in messages %}
+{% comment %} {% for message in messages %}
    <h5 class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert" ><b>Hey! :</b1>{{message}}<h5>
- {% endfor %}
+ {% endfor %} {% endcomment %}
 <div class="wrapper fadeInDown">
 	<div id="formContent">
 	  <!-- Tabs Titles -->
@@ -287,9 +287,15 @@
 	  <!-- Login Form -->
 	  <form method='POST' action='sign_in'>
 		  {% csrf_token %}
-		<input class='form2' type="text" id="login" class="fadeIn second" name="username" placeholder="Username.." pattern="[A-Za-z]{6,20}" required title="Only Use letter 6 to 20">
+		<input class='form2' type="text"  id="login" class="fadeIn second" name="username" placeholder="Username.."  required title="Only Use letter 6 to 20">
 		<input class='form2' type="password" id="password" class="fadeIn third" name="password" placeholder="password">
 		<input class='form2' type="submit" class="fadeIn fourth" value="Sign In">
+		{% if fail %}
+		<small><b>Error in Crediatials</b><small>
+		{% elif fail2 %}
+		<small><b>Error in Crediatials</b><small>	
+		{% endif %}
+
 	  </form>
 	  
 	  <!-- Remind Passowrd -->
