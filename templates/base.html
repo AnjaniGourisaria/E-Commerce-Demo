@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"
-   style="scrollbar-color: black aqua;scrollbar-width: thin;scroll-snap-type: both;scroll-behavior: smooth;font-size: large;">
+<html lang="en">
 
 <head>
 {% load static %}
@@ -87,281 +86,616 @@
 
    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
    <!-- End Of my css -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+ 
+
+   <!-- Google font -->
+   {% comment %} <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
+
+   <!-- Bootstrap -->
+   <link type="text/css" rel="stylesheet" href="static/csss/bootstrap.min.css" />
+
+   <!-- Slick -->
+   <link type="text/css" rel="stylesheet"  href="{% static '/csss/slick.css' %}" />
+   <link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
+
+   <!-- nouislider -->
+   <link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
+
+   {% comment %} <!-- Font Awesome Icon -->
+   <link rel="stylesheet" type="text/css"
+       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
+   <!-- Custom stlylesheet -->
+   <link type="text/css" rel="stylesheet" href="{% static '/csss/style.css' %}" />
+
+
+
+</head>
 
 </head>
 
 <body>
-
-   <script>
-      document.write(" ")
-   </script>
-   <noscript>Your browser does not support JavaScript!</noscript>
-   <!-- banner bg main start -->
-   <div class="banner_bg_main">
-      <!-- header top section start -->
-      <div class="container" style="margin-bottom: -36px;">
-         <div class="header_section_top">
-            <div class="row">
-               <div class="col-sm-12">
-                  <div class="custom_menu" style="background-color: #051922;">
-                     <ul>
-                        <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Gift Ideas</a></li>
-
-                        <li><a href="#">Consumer Service</a></li>
-                     </ul>
-                  </div>
-               </div>
+    <!-- HEADER -->
+    <header>
+        <!-- TOP HEADER -->
+        <div id="top-header" style="background: #69d100;">
+            <div class="container">
+                <ul class="header-links pull-left">
+                    <li><a href="#"><i class=""></i></a></li>
+                    <li><a href="mailto"><i class=""></i> </a></li>
+                    <li><a href="#"><i class=""></i></a></li>
+                </ul>
+                <ul class="header-links pull-right">
+                    {% comment %} <li><a href="#"><i class="fa fa-dollar"></i> </a></li> {% endcomment %}
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'login' %}"><img src="https://img.icons8.com/material-sharp/24/000000/user.png"/><span
+                            class="padding_10">{{user.username }}</span></a>
+                    <a href="{% url 'log_out' %}"><img src="https://img.icons8.com/windows/20/000000/shutdown.png"/></a>
+                    {% else %}
+                    <a href="{% url 'sign_in' %}"> <span class="padding_10">SignIn</span></a><span>|</span><a
+                        href="{% url 'sign_up' %}">SignUp</span></a>
+                    {% endif %}
+                </ul>
             </div>
-         </div>
-      </div>
-      <!-- header top section start -->
-      <!-- logo section start -->
-      <div class="logo_section">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <div class="logo"><a href="home"><img src="static/images/logo.png"></a></div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- logo section end -->
-      <!-- header section start -->
-      <div class="header_section">
-         <div class="container">
-            <div class="containt_main">
-               <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                  <a href="home">Home</a>
-                  <a href="shop">Shop</a>
-                  <a href="contactus">Contact Us</a>
-                  <a href=""></a>
-                  <a href=""></a>
-               </div>
-               <span class="toggle_icon" onclick="openNav()"><img src="static/images/toggle-icon.png"></span>
-               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                     style="background-color: #051922;height: 42px !important;border-radius: 20px;">All Categories
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                     <a class="dropdown-item" href="#">Antiques</a>
-                     <a class="dropdown-item" href="#">Art</a>
-                     <a class="dropdown-item" href="electronic">Electronic</a>
-                     <a class="dropdown-item" href="fashion">Fashion</a>
-                     <a class="dropdown-item" href="#">Books</a>
-                     <a class="dropdown-item" href="#">Cameras &amp; Photo </a>
-                     <a class="dropdown-item" href="jewellery">Jewellery</a>
-                     <a class="dropdown-item" href="#">Clothing, Shoes &amp; Accessories</a>
-                     <a class="dropdown-item" href="#">Collectibles</a>
-                     <a class="dropdown-item" href="#">Computers/Tablets &amp; Networking</a>
-                     <a class="dropdown-item" href="#">Everything Else</a>
-                  </div>
-               </div>
-               <div class="main">
-                  <!-- Another variation with a button -->
-                  <form action="search" method='Post'>
-                     {% csrf_token %}
-                  <div class="input-group">
-                     <input name="searching" type="text" class="form-control" placeholder="Search this blog" style="height: 41px;">
-                     <div class="input-group-append" >
-                        <button class="btn btn-secondary" type="submit"
-                        style="background-color: #f26522; border-color:#f26522; height: 41px;">
-                           <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                        
-                     </div>
-                  </div>
-                     </form>
-                    
-               </div>
-               <div class="header_box">
-                  <div class="lang_box ">
-                     <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true"
-                        style="padding: 7px 11px;">
-                        <img src="/static/images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English
-                        <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
-                     </a>
-                     <div class="dropdown-menu ">
-                        <a href="#" class="dropdown-item">
-                           <img src="https://img.icons8.com/offices/20/000000/india.png"/>
-                           Hindi
-                        </a>
-                     </div>
-                  </div>
-                  <div class="login_menu">
-                     <ul>
-                        <li><a href="#">
-                              {% if user.is_authenticated %}
-                              
-                              <a  href="addcart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
-                              {% else %}
-                              <span></span>
-                              {% endif %}
-                        </li>
-                        <li>
+        </div>
+        <!-- /TOP HEADER -->
 
-                           {% if user.is_authenticated %}
-                           <a href="login"><i class="fa fa-user" aria-hidden="true"></i><span
-                                 class="padding_10">{{user.username }}</span></a>
-                           <a href="log_out"><i class="fa fa-sign-out" aria-hidden="true"
-                                 style="padding: 1px 7px;"></i></a>
-                           {% else %}
-                           <a href="sign_in"> <span class="padding_10">SignIn</span></a><span>|</span><a
-                              href="sign_up">SignUp</span></a>
-                           {% endif %}
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- header section end -->
-      <!-- banner section start -->
-      <div class="banner_section layout_padding">
-         <div class="container">
-            <div id="my_slider" class="carousel slide" data-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item">
-                     <div class="row">
-                        <div class="col-sm-12">
-                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                           <div class="buynow_bt"><a href="products/1">Buy Now</a></div>
+        <!-- MAIN HEADER -->
+        <div id="header">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <!-- LOGO -->
+                    <div class="col-md-3">
+                        <div class="header-logo">
+                            <a href="{% url 'home' %}" class="logo">
+                                <img src="{% static '/images/logo.png' %}" alt="" style="padding: 12px 65px;">
+                            </a>
                         </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item active">
-                     <div class="row">
-                        <div class="col-sm-12">
-                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                           <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                    </div>
+                    <!-- /LOGO -->
+
+                    <!-- SEARCH BAR -->
+                    <div class="col-md-6">
+                        <div class="header-search">
+                            <form method="POST" action="{% url 'search' %}">
+                                {% csrf_token %}
+                                <select class="input-select"
+                                    style="border-radius: 0px !important;border-block-color: aqua;margin-right: -122px;">
+                                    <option value="0">All Categories</option>
+                                    <option value="1">Antiques</option>
+                                    <option value="2">Art</option>
+                                    <option value="3">Electronic</option>
+                                    <option value="4">Fashion</option>
+                                    <option value="5">Books</option>
+                                    <option value="6">Cameras &amp; Photo </option>
+                                    <option value="7">Jewellery</option>
+                                    <option value="8">Clothing, Shoes &amp; Accessories</option>
+                                    <option value="9">Collectibles</option>
+                                    <option value="10">Computers/Tablets &amp; Networking</option>
+                            </select>
+                                <input name='searching' class="input" placeholder="Search here">
+                                <button class="search-btn" style="margin-right: -31px;">Search</button>
+                            </form>
                         </div>
-                     </div>
-                  </div>
-                  <div class="carousel-item">
-                     <div class="row">
-                        <div class="col-sm-12">
-                           <h1 class="banner_taital">Get Start <br>Your favriot shoping</h1>
-                           <div class="buynow_bt"><a href="#">Buy Now</a></div>
+                    </div>
+                    <!-- /SEARCH BAR -->
+
+                    <!-- ACCOUNT -->
+                    <div class="col-md-3 clearfix">
+                        <div class="header-ctn">
+                            <!-- Wishlist -->
+                            {% comment %} <div>
+                                <a href="#">
+                                    <i class="fa fa-heart-o"></i>
+                                    <span>Your Wishlist</span>
+                                    <div class="qty">2</div>
+                                </a>
+                            </div> {% endcomment %}
+                            <!-- /Wishlist -->
+
+                            <!-- Cart -->
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                    {% if user.is_authenticated %}
+                                    <img src="https://img.icons8.com/nolan/44/favorite-cart.png"/>
+                                    <a href="addcart"> Cart</a>
+                                    {% else %}
+                                    <span></span></a>
+                                {% endif %}
+
+                                <div class="cart-dropdown">
+                                    <div class="cart-list">
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="static/imgs/product01.png" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+                                            </div>
+                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </div>
+
+                                        <div class="product-widget">
+                                            <div class="product-img">
+                                                <img src="static/imgs/product02.png" alt="">
+                                            </div>
+                                            <div class="product-body">
+                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                            </div>
+                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="cart-summary">
+                                        <small>3 Item(s) selected</small>
+                                        <h5>SUBTOTAL: $2940.00</h5>
+                                    </div>
+                                    <div class="cart-btns">
+                                        <a href="addcart">View Cart</a>
+                                        <a href="checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Cart -->
+
+                            <!-- Menu Toogle -->
+                            {% comment %} <div class="menu-toggle">
+                                <a href="#">
+                                    <i class="fa fa-bars"></i>
+                                    <span>Menu</span>
+                                </a>
+                            </div> {% endcomment %}
+                            <!-- /Menu Toogle -->
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
-                  <i class="fa fa-angle-left" aria-hidden="true"></i>
-               </a>
-               <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
-                  <i class="fa fa-angle-right" aria-hidden="true"></i>
-               </a>
+                    </div>
+                    <!-- /ACCOUNT -->
+                </div>
+                <!-- row -->
             </div>
-         </div>
-      </div>
-      <!-- banner section end -->
-   </div>
-   <!-- banner bg main end -->
+            <!-- container -->
+        </div>
+        <!-- /MAIN HEADER -->
+    </header>
+    <!-- /HEADER -->
 
-   {% block body %}
-   {% endblock body %}
-
-   <!-- jewellery  section end -->
-
-   <footer id="footer">
-      <!-- top footer -->
-      <div class="section">
-         <!-- container -->
-         <div class="container">
+    <!-- BREADCRUMB -->
+    {% comment %} <div id="breadcrumb" class="section">
+        <!-- container -->
+        <div class="container">
             <!-- row -->
             <div class="row">
-               <div class="col-md-3 col-xs-6">
-                  <div class="footer">
-                     <h3 class="footer-title">About Us</h3>
-                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.
-                     </p>
-                     <ul class="footer-links">
-                        <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-                        <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-                        <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-                     </ul>
-                  </div>
-               </div>
-
-               <div class="col-md-3 col-xs-6">
-                  <div class="footer">
-                     <h3 class="footer-title">Categories</h3>
-                     <ul class="footer-links">
-                        <li><a href="#">Hot deals</a></li>
-                        <li><a href="#">Laptops</a></li>
-                        <li><a href="#">Smartphones</a></li>
-                        <li><a href="#">Cameras</a></li>
+                <div class="col-md-12">
+                    <ul class="breadcrumb-tree">
+                        <li><a href="home">Home</a></li>
+                        <li><a href="#">All Categories</a></li>
                         <li><a href="#">Accessories</a></li>
-                     </ul>
-                  </div>
-               </div>
-
-               <div class="clearfix visible-xs"></div>
-
-               <div class="col-md-3 col-xs-6">
-                  <div class="footer">
-                     <h3 class="footer-title">Information</h3>
-                     <ul class="footer-links">
-                        <li><a href="about">About Us</a></li>
-                        <li><a href="contactus">Contact Us</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Orders and Returns</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                     </ul>
-                  </div>
-               </div>
-
-               <div class="col-md-3 col-xs-6">
-                  <div class="footer">
-                     <h3 class="footer-title">Service</h3>
-                     <ul class="footer-links">
-                        <li><a href="sign_in">My Account</a></li>
-                        <li><a href="addcart">View Cart</a></li>
-                        <li><a href="shop">Shop</a></li>
-                        <li><a href="#">Track My Order</a></li>
-                        <li><a href="help">Help</a></li>
-                     </ul>
-                  </div>
-               </div>
+                        <li class="active">Headphones (227,490 Results)</li>
+                    </ul>
+                </div>
             </div>
             <!-- /row -->
-         </div>
-         <!-- /container -->
-      </div>
-      <!-- /top footer -->
+        </div>
+        <!-- /container -->
+    </div> {% endcomment %}
+    <!-- /BREADCRUMB MYEND -->
+    {% block body %}
 
-      <!-- bottom footer -->
-      <div id="bottom-footer" class="section">
-         <div class="container">
+    {% endblock body %}
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
             <!-- row -->
             <div class="row">
-               <div class="col-md-12 text-center">
-                  <ul class="footer-payments">
-                     <li><a href="https://www.visa.co.in"><i class="fa fa-cc-visa"></i></a></li>
-                     <li><a href="https://www.paypal.com"><i class="fa fa-paypal"></i></a></li>
-                     <li><a href="https://www.mastercard.co.in"><i class="fa fa-cc-mastercard"></i></a></li>
-                     <li><a href="https://www.discover.com"><i class="fa fa-cc-discover"></i></a></li>
-                     <li><a href="https://www.americanexpress.com"><i class="fa fa-cc-amex"></i>
-                  </ul>
-                  <span class="copyright">
-                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                     Copyright &copy;
-                     <script>document.write(new Date().getFullYear());</script> All rights reserved
-                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                  </span>
-               </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="section-title">
+                        <h4 class="title">Top selling</h4>
+                        <div class="section-nav">
+                            <div id="slick-nav-3" class="products-slick-nav"></div>
+                        </div>
+                    </div>
+
+                    <div class="products-widget-slick" data-nav="#slick-nav-3">
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product07.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product08.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product09.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product01.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product02.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product03.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-6">
+                    <div class="section-title">
+                        <h4 class="title">Top selling</h4>
+                        <div class="section-nav">
+                            <div id="slick-nav-4" class="products-slick-nav"></div>
+                        </div>
+                    </div>
+
+                    <div class="products-widget-slick" data-nav="#slick-nav-4">
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product04.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product05.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product06.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product07.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product08.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product09.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix visible-sm visible-xs"></div>
+
+                <div class="col-md-4 col-xs-6">
+                    <div class="section-title">
+                        <h4 class="title">Top selling</h4>
+                        <div class="section-nav">
+                            <div id="slick-nav-5" class="products-slick-nav"></div>
+                        </div>
+                    </div>
+
+                    <div class="products-widget-slick" data-nav="#slick-nav-5">
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product01.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product02.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product03.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+
+                        <div>
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product04.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product05.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- /product widget -->
+
+                            <!-- product widget -->
+                            <div class="product-widget">
+                                <div class="product-img">
+                                    <img src="./img/product06.png" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">Category</p>
+                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                    <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                </div>
+                            </div>
+                            <!-- product widget -->
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- /row -->
-         </div>
-         <!-- /container -->
-      </div>
-      <!-- /bottom footer -->
-   </footer>
-   <!-- /FOOTER -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+
+
+    <!-- NEWSLETTER -->
+
+    <!-- FOOTER -->
+    <!-- top footer -->
+    <footer id="footer">
+        <div class="section">
+            <!-- container -->
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">About Us</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut.</p>
+                            <ul class="footer-links">
+                                <li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+                                <li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+                                <li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Categories</h3>
+                            <ul class="footer-links">
+                                <li><a href="#">Hot deals</a></li>
+                                <li><a href="#">Laptops</a></li>
+                                <li><a href="#">Smartphones</a></li>
+                                <li><a href="#">Cameras</a></li>
+                                <li><a href="#">Accessories</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="clearfix visible-xs"></div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Information</h3>
+                            <ul class="footer-links">
+                                <li><a href="about">About Us</a></li>
+                                <li><a href="contactus">Contact Us</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Orders and Returns</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-xs-6">
+                        <div class="footer">
+                            <h3 class="footer-title">Service</h3>
+                            <ul class="footer-links">
+                                <li><a href="sign_in">My Account</a></li>
+                                <li><a href="addcart">View Cart</a></li>
+                                <li><a href="shop">Shop</a></li>
+                                <li><a href="#">Track My Order</a></li>
+                                <li><a href="help">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /top footer -->
+
+        <!-- bottom footer -->
+        <div id="bottom-footer" class="section">
+            <div class="container">
+                <!-- row -->
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <ul class="footer-payments">
+                            <li><a href="https://www.visa.co.in"><i class="fab fa-cc-visa"></i></a></li>
+                            <li><a href="https://www.paypal.com"><i class="fab fa-paypal"></i></a></li>
+                            <li><a href="https://www.mastercard.co.in"><i class="fab fa-cc-mastercard"></i></a></li>
+                            <li><a href="https://www.discover.com"><i class="fab fa-cc-discover"></i></a></li>
+                            <li><a href="https://www.americanexpress.com"><i class="fab fa-cc-amex"></i>
+                        </ul>
+                        <span class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </span>
+                    </div>
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+        <!-- /bottom footer -->
+    </footer>
+
+    <!-- jQuery Plugins -->
+    <script src="{% static '/jss/jquery.min.js' %}"></script>
+    <script src="{% static '/jss/bootstrap.min.js' %}"></script>
+    <script src="{% static '/jss/slick.min.js' %}"></script>
+    <script src="{% static '/jss/nouislider.min.js' %}"></script>
+    <script src="{% static '/jss/jquery.zoom.min.js' %}"></script>
+    <script src="{% static '/jss/main.js' %}"></script>
+    {% comment %} <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />{%
+    comment %}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" /> {% endcomment
+    %} {% endcomment %}
 
    <!-- Javascript files-->
    <script src="static/js/jquery.min.js"></script>
@@ -382,7 +716,12 @@
          document.getElementById("mySidenav").style.width = "0";
       }
    </script>
-
+   <script src="{% static '/jss/jquery.min.js' %}"></script>
+   <script src="{% static '/jss/bootstrap.min.js' %}"></script>
+   <script src="{% static '/jss/slick.min.js' %}"></script>
+   <script src="{% static '/jss/nouislider.min.js' %}"></script>
+   <script src="{% static '/jss/jquery.zoom.min.js' %}"></script>
+   <script src="{% static '/jss/main.js' %}"></script>
 
    </div>
    </div>

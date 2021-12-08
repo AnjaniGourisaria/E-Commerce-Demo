@@ -125,7 +125,8 @@ def checkout(request):
 
 
 def login(request):
-    return HttpResponse("this is done suessfully")
+    return render(request, 'login.html')
+    # return HttpResponse("this is done suessfully")
     # if request.method == 'POST':
     # else:
     #     HttpResponse('404 Not Found')
@@ -171,3 +172,14 @@ def products(request,id):
     p = Product.objects.filter(id=id)
     return render(request, 'products.html',{'p':p})
     
+def order(request):
+        return render(request, 'order.html')
+    
+
+def tracker(request):
+        return render(request, 'tracker.html')
+    
+
+def passwordchange(request):
+    return render(request, 'passwordchange.html')
+ 

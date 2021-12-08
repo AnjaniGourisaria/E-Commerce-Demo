@@ -37,7 +37,11 @@ urlpatterns = [
     path("sign_in",views.sign_in,name='sign_in'),
     path("log_out",views.log_out,name='log_out'),
     path("contactus",views.contactus,name='contactus'),
-    path("products/<int:id>/",views.products,name='products')
+    path("products/<int:id>/",views.products,name='products'),
+    path("order",views.order,name='order'),
+    path("tracker",views.tracker,name='tracker'),
+    path("passwordchange",views.passwordchange,name='passwordchange')
+    
     
 ]
 

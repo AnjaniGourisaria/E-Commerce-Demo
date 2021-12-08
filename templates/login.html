@@ -1,220 +1,59 @@
+{% extends 'loginbase.html' %}
+{% block title3 %}|{% endblock title3 %}
 
-<html class="no-js" lang="en"><head>
-    <meta charset="utf-8">
+{% block body3 %}
 
-    <!--====== Title ======-->
-    {% block title %}{{uname}}{% endblock title%}
-
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="static/assets/images/favicon.png" type="image/png">
-
-    <!--====== Tiny Slider CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/tiny-slider.css">
-
-    <!--====== Line Icons CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/LineIcons.css">
-
-    <!--====== Material Design Icons CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/materialdesignicons.min.css">
-
-    <!--====== Bootstrap CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/bootstrap.min.css">
-
-    <!--====== gLightBox CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/glightbox.min.css">
-
-    <!--====== nouiSlider CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/nouislider.min.css">
-
-    <!--====== Default CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/default.css">
-
-    <!--====== Style CSS ======-->
-    <link rel="stylesheet" href="static/assets/css/style.css">
-  </head>
-
-  <body>
-    <!--====== Page Banner Part Start ======-->
-
-    
-
-<section class="page-banner">
-      <div class="container">
-        <div class="row">
-          <a href="home"><h6>&lt;- Back to home</h6></a><div class="col-lg-12">
-            <div class="page-banner-content text-center">
-              <h1 class="sub-title">Welcome to {{uname}}</h1>
-              <h3 class="page-title"></h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--====== Page Banner Part Ends ======-->
-
-    <!--====== Profile Start ======-->
-
-    
-
-    <!--====== Profile Ends ======-->
-
-    <!--====== Profile Dark Start ======-->
-
-    <section class="profile-wrapper profile-dark pt-100 pb-100">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-9">
-            <div class="profile">
-              <div class="profile-header">
-                <div class="profile-cover-photo bg_cover" style="background-image: url(static/assets/images/profile-cover.png)"></div>
-                <div class="
-                    profile-author
-                    d-sm-flex
-                    flex-row-reverse
-                    justify-content-between
-                    align-items-end
-                  ">
-                  
-                  <div class="profile-name">
-                    <h4 class="name">John Doe Nick</h4>
-                    <p class="email">doe@email.com</p>
-                  </div>
-                </div>
+          <form>
+            <div class="row mt-5 align-items-center">
+              <div class="col-md-3 text-center mb-5">
+                <div class="avatar avatar-xl"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."
+                    class="avatar-img rounded-circle"></div>
               </div>
-              <div class="profile-body">
-                <div class="profile-title">
-                  <h5 class="title">Personal Details</h5>
-                  <a class="profile-link" href="#0">edit</a>
-                </div>
-                <div class="profile-details">
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">User Full Name:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>John Doe Nick</p>
-                    </div>
-                  </div>
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">Email:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>doe@email.com</p>
-                    </div>
-                  </div>
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">Phone:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>+123 456 789 0234</p>
-                    </div>
-                  </div>
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">Address:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>Company Inc., 8901 Marmora Road, Glasgow, D04 89GR.</p>
-                    </div>
-                  </div>
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">Gender:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>Male</p>
-                    </div>
-                  </div>
-                  <div class="single-details-item d-flex flex-wrap">
-                    <div class="details-title">
-                      <h6 class="title">Birthday:</h6>
-                    </div>
-                    <div class="details-content media-body">
-                      <p>04 January 1992</p>
-                    </div>
+              <div class="col">
+                <div class="row align-items-center">
+                  <div class="col-md-7">
+                    <h4 class="mb-1"><b>Hi !</b> {{ request.user }}</h4>
+                    <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
                   </div>
                 </div>
-              </div>
-              <div class="profile-footer mt-45">
-                <div class="profile-title">
-                  <h5 class="title">Cards</h5>
-                  <a class="profile-link" href="#0">Add Cards</a>
-                </div>
-                <div class="profile-card-info">
-                  <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="single-card-info d-flex">
-                        <div class="card-icon">
-                          <img src="static/assets/images/visa.png" alt="Card">
-                        </div>
-                        <div class="card-info media-body">
-                          <h5 class="card-name">Musa Ahmed</h5>
-                          <p class="card-number">
-                            .... 4534 <span>02/20</span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="single-card-info d-flex">
-                        <div class="card-icon">
-                          <img src="static/assets/images/american-express.png" alt="Card">
-                        </div>
-                        <div class="card-info media-body">
-                          <h5 class="card-name">Musa Ahmed</h5>
-                          <p class="card-number">
-                            .... 4534 <span>02/20</span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="single-card-info d-flex">
-                        <div class="card-icon">
-                          <img src="static/assets/images/mastercard.png" alt="Card">
-                        </div>
-                        <div class="card-info media-body">
-                          <h5 class="card-name">Musa Ahmed</h5>
-                          <p class="card-number">
-                            .... 4534 <span>02/20</span>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+                <div class="row mb-4">
+                  <div class="col-md-7">
+                    <p class="text-muted"> address</p>
+                  </div>
+                  <div class="col">
+                    <p class="small mb-0 text-muted">phone</p>
+                    <p class="small mb-0 text-muted">email</p>
+                    <p class="small mb-0 text-muted">most recent order status</p>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <hr class="my-4">
+            <div class="form-row">
+              <div class="form-group col-md-6"> <label for="firstname">Firstname</label> <input type="text"
+                  id="firstname" class="form-control" placeholder="Brown"></div>
+              <div class="form-group col-md-6"> <label for="lastname">Lastname</label> <input type="text" id="lastname"
+                  class="form-control" placeholder="Asher"></div>
+            </div>
+            <div class="form-group"> <label for="inputEmail4">Email</label> <input type="email" class="form-control"
+                id="inputEmail4" placeholder="brown@asher.me"></div>
+            <div class="form-group"> <label for="inputAddress5">Address</label> <input type="text" class="form-control"
+                id="inputAddress5" placeholder="P.O. Box 464, 5975 Eget Avenue"></div>
+            <div class="form-row">
+              <div class="form-group col-md-6"> <label for="inputCompany5">Company</label> <input type="text"
+                  class="form-control" id="inputCompany5" placeholder="Nec Urna Suscipit Ltd"></div>
+              <div class="form-group col-md-4"> <label for="inputState5">State</label> <select id="inputState5"
+                  class="form-control">
+                  <option selected="">Choose...</option>
+                  <option>...</option>
+                </select></div>
+              <div class="form-group col-md-2"> <label for="inputZip5">Zip</label> <input type="text"
+                  class="form-control" id="inputZip5" placeholder="98232"></div>
+            </div>
+            <hr class="my-4">
+          </form>
         </div>
       </div>
-    </section>
-
-    <!--====== Profile Dark Ends ======-->
-
-    <!--====== Bootstrap js ======-->
-    <script src="static/assets/js/bootstrap.bundle.min.js"></script>
-
-    <!--====== Tiny Slider js ======-->
-    <script src="static/assets/js/tiny-slider.js"></script>
-
-    <!--====== nouiSlider js ======-->
-    <script src="static/assets/js/nouislider.min.js"></script>
-
-    <!--====== count up js ======-->
-    <script src="static/assets/js/count-up.min.js"></script>
-
-    <!--====== gLightBox js ======-->
-    <script src="static/assets/js/glightbox.min.js"></script>
-
-    <!--====== Main js ======-->
-    <script src="static/assets/js/main.js"></script>
-  
-
-</body></html>
+    </div>
+  </div>
+  {% endblock body3 %}
