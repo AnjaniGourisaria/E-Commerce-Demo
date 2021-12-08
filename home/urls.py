@@ -22,11 +22,12 @@ from home.views import CustumerRegestrationView
 
 urlpatterns = [
     path("",views.index,name='home'),
+    # path('',views.ProductView.as_view(),name='home'),
     path("home",views.index,name='home'),
     path("jewellery",views.jewellery,name='jewellery'),
     path("fashion",views.fashion,name='fashion'),
     path("electronic",views.electronic,name='electronic'),
-    path("seacrh",views.search,name='search'),
+    path("search",views.search,name='search'),
     path("addcart",views.addcart,name='addcart'),
     # path("sign_up",views.sign_up,name='sign_up'),
     path('sign_up',views.CustumerRegestrationView.as_view(),name='sign_up'),
@@ -35,7 +36,9 @@ urlpatterns = [
     path("login",views.login,name='login'),
     path("sign_in",views.sign_in,name='sign_in'),
     path("log_out",views.log_out,name='log_out'),
-    path("contactus",views.contactus,name='contactus')
+    path("contactus",views.contactus,name='contactus'),
+    path("products/<int:id>/",views.products,name='products')
+    
 ]
 
 

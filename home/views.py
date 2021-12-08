@@ -7,14 +7,20 @@ from django.contrib import messages
 from django.views import View
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
-from .models import Contacts, Product #, SignUp
+from .models import (Product , Contacts , Customer , Cart , OrderPlaced)
 import re
 from .forms import CustomerRegistrationForm
 # Create your views here.
 
 
+# class ProductView(View):
+#     def get(self,request):
+#         p = Product.objects.filter(sub_category='Phone')
+#         return render(request, 'index.html',{'p':p})
+
 def index(request):
-    return render(request, 'index.html')
+    p = Product.objects.filter(sub_category='Phone')
+    return render(request, 'index.html',{'p':p})
     # return HttpResponse("this is done suessfully")
 
 
@@ -102,7 +108,10 @@ class CustumerRegestrationView(View):
             return render(request, 'sign_up.html',{'form':form})
 def search(request):
     # return HttpResponse("this is done suessfully")
-    return render(request, 'search.html') 
+    product_name = request.POST['searching']
+    print(product_name)
+    Apple = Product.objects.filter(product_name__contains=product_name)
+    return render(request, 'search.html',{'Apple':Apple}) 
 
 
 def shop(request):
@@ -156,3 +165,9 @@ def contactus(request):
             
     else:
         return render(request, 'contactus.html',{'notpost':"it was not post method "})
+    
+    
+def products(request,id):
+    p = Product.objects.filter(id=id)
+    return render(request, 'products.html',{'p':p})
+    

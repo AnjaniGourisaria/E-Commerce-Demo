@@ -6,6 +6,7 @@ from .models import (Product , Contacts , Customer , Cart , OrderPlaced)
 #Customer Registraiton
 @admin.register(Customer)
 class CustomerModelAdmin(admin.ModelAdmin):
+    model = Customer
     list_dislay= ['id','user','name','phone','station','locality','city','zipcode','state','date']
 
 #Product Registraiton

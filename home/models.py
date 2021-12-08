@@ -36,7 +36,11 @@ class Product(models.Model):
     description = models.CharField(max_length=400,default="")
     publish_date= models.DateTimeField(default=datetime.now,blank=True)
     stock = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='img/',default="")
+    image = models.ImageField(upload_to='img/',default="",blank=True)
+    image2 = models.ImageField(upload_to='img/',default="",blank=True)
+    image3 = models.ImageField(upload_to='img/',default="",blank=True)
+    image4 = models.ImageField(upload_to='img/',default="",blank=True)
+    
     space="--------------"
     def __str__(self):
         return str(self.id)

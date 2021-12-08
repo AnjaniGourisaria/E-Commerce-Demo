@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Search {% endblock title %}
+{% block body %}
+{% if Apple %}
+{% for product in Apple %}
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{{ product.image.url }}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{ product.product_name }}</h5>
+    <p class="card-text">{{ product.description }}</p>
+    <p class="card-text">Price - {{ product.dprice }}</p>
+    <a href=" {% url 'products' product.id %} " class="btn btn-primary">Buy Now</a>
+  </div>
+</div>
+{% endfor %}
+{% else %}
+<span><b>No Result Found</b></span>
+{% endif %}
+
+
+{% endblock body %}
+
