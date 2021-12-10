@@ -21,15 +21,16 @@ from home import views
 from home.views import CustumerRegestrationView
 
 urlpatterns = [
-    path("",views.index,name='home'),
+    # path("electronic",views.electronic,name='electronic'),
     # path('',views.ProductView.as_view(),name='home'),
+    # path("fashion",views.fashion,name='fashion'),
+    # path("sign_up",views.sign_up,name='sign_up'),
+    # path("jewellery",views.jewellery,name='jewellery'),
+    path("",views.index,name='home'),
     path("home",views.index,name='home'),
-    path("jewellery",views.jewellery,name='jewellery'),
-    path("fashion",views.fashion,name='fashion'),
-    path("electronic",views.electronic,name='electronic'),
     path("search",views.search,name='search'),
     path("addcart",views.addcart,name='addcart'),
-    # path("sign_up",views.sign_up,name='sign_up'),
+    path('cart/',views.sync_cart,name='sync_cart'),
     path('sign_up',views.CustumerRegestrationView.as_view(),name='sign_up'),
     path("shop",views.shop,name='shop'),
     path("checkout",views.checkout,name='checkout'),
@@ -40,9 +41,7 @@ urlpatterns = [
     path("products/<int:id>/",views.products,name='products'),
     path("order",views.order,name='order'),
     path("tracker",views.tracker,name='tracker'),
-    path("passwordchange",views.passwordchange,name='passwordchange')
-    
-    
+    path("passwordchange",views.passwordchange,name='passwordchange') 
 ]
 
 

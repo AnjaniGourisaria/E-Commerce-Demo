@@ -4,11 +4,24 @@ from django.contrib.auth.models import User
 from django.core.validators import MaxLengthValidator,MinValueValidator
 
 # Create your models here.
+
+class Contacts(models.Model):
+    id = models.AutoField(primary_key=True)
+    username = models.CharField(max_length=15,default="")
+    email = models.EmailField(max_length=30,default="")
+    phone = models.IntegerField(default="")
+    msg = models.CharField(max_length=900,default="")
+    publish_date= models.DateTimeField(default=datetime.now,blank=True)
+    space="--------------"
+    def __str__(self):
+        self.list_dislay= [self.id,self.space,self.username,self.space,self.email,self.space,self.phone,self.space,self.publish_date]
+        return str(self.list_dislay)
 STATION = (
     ('Home','Home'),
     ('Work','Work'),
     ('Others','Others'),
 )
+
 
 class Customer(models.Model):
     id = models.AutoField(primary_key=True)
@@ -46,17 +59,6 @@ class Product(models.Model):
         return str(self.id)
 
 
-class Contacts(models.Model):
-    id = models.AutoField(primary_key=True)
-    username = models.CharField(max_length=15,default="")
-    email = models.EmailField(max_length=30,default="")
-    phone = models.IntegerField(default="")
-    msg = models.CharField(max_length=900,default="")
-    publish_date= models.DateTimeField(default=datetime.now,blank=True)
-    space="--------------"
-    def __str__(self):
-        self.list_dislay= [self.id,self.space,self.username,self.space,self.email,self.space,self.phone,self.space,self.publish_date]
-        return str(self.list_dislay)
 
 class Cart(models.Model):
     id = models.AutoField(primary_key=True)

@@ -9,35 +9,36 @@ Contact Us
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container contact-form">
-    {% for message in messages %}
-<div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-   <strong>Hey! :</strong> <span>{{message}}</span>
-   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
- </div>
- {% endfor %}
+
 
             <div class="contact-image">
                 <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+
+
+
+
                 {% if unameerr %}
                 <p>
-                    Please Fill the Username Correctly Only Letter
+                    Please Fill the Username Correctly Only Letter and number
                 </p>
-                {% endif %}
-                {% if emailerr %}
+                
+                {% elif emailerr %}
                 <p>
                     Please Fill the Email Correctly Only Email
                 </p>
-                {% endif %}
-                {% if phoneerr %}
+            
+                {% elif phoneerr %}
                 <p>
                     Please Fill the Phone Correctly Only Numbers
                 </p>
-                {% endif %}
-                {% if fullsuscess %}
+                
+                {% elif fullsuscess %}
                 <p><script>
                    alert('Sussesfully Forms filled')
                 </script>
                 </p>
+                {% else %}
+                <p>Fully Condition Broken please fill form correctly.</p>
                 {% endif %}
             </div>
             <form action="contactus" method="post">
@@ -46,7 +47,7 @@ Contact Us
                <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" name="uname" class="form-control" placeholder="Your Name *" required pattern=".{8,15}" max-length=15/>
+                            <input type="text" name="uname" class="form-control" placeholder="Your Name *" required pattern="\b[A-Za-z0-9!@#()_-]{5,15}\b" max-length=15/>
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-control" placeholder="Your Email *"  required pattern="\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b"/>

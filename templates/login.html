@@ -3,7 +3,10 @@
 
 {% block body3 %}
 
-          <form>
+
+
+          <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
             <div class="row mt-5 align-items-center">
               <div class="col-md-3 text-center mb-5">
                 <div class="avatar avatar-xl"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."
@@ -12,48 +15,73 @@
               <div class="col">
                 <div class="row align-items-center">
                   <div class="col-md-7">
+                    {% if loginform %}
+                    {% for lf in loginform  %}
                     <h4 class="mb-1"><b>Hi !</b> {{ request.user }}</h4>
-                    <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
+                    <p class="small mb-3"><span class="badge badge-dark">India</span></p>
                   </div>
                 </div>
                 <div class="row mb-4">
                   <div class="col-md-7">
-                    <p class="text-muted"> address</p>
+                    <p class="text-muted"> {{lf.locality}} </p>
                   </div>
                   <div class="col">
-                    <p class="small mb-0 text-muted">phone</p>
+                    <p class="small mb-0 text-muted">{{lf.phone}}</p>
                     <p class="small mb-0 text-muted">email</p>
                     <p class="small mb-0 text-muted">most recent order status</p>
                   </div>
                 </div>
               </div>
             </div>
+            {% endfor %}
+            {% else %}
+            <h4 class="mb-1"><b>Hi !</b> {{ request.user }}</h4>
+                    <p class="small mb-3"><span class="badge badge-dark">India</span></p>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-md-7">
+                    <p class="text-muted"> </p>
+                  </div>
+                  <div class="col">
+                    <p class="small mb-0 text-muted"></p>
+                    <p class="small mb-0 text-muted"></p>
+                    <p class="small mb-0 text-muted"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
             <hr class="my-4">
             <div class="form-row">
-              <div class="form-group col-md-6"> <label for="firstname">Firstname</label> <input type="text"
-                  id="firstname" class="form-control" placeholder="Brown"></div>
-              <div class="form-group col-md-6"> <label for="lastname">Lastname</label> <input type="text" id="lastname"
-                  class="form-control" placeholder="Asher"></div>
+              <div class="form-group col-md-6"> <label for="firstname">Firstname</label> <input name="name" type="text"
+                  id="firstname" class="form-control" placeholder="Firstname"></div>
+              <div class="form-group col-md-6"> <label for="lastname">Lastname</label> <input name="name2" type="text" id="lastname"
+                  class="form-control" placeholder="Lastname"></div>
             </div>
-            <div class="form-group"> <label for="inputEmail4">Email</label> <input type="email" class="form-control"
-                id="inputEmail4" placeholder="brown@asher.me"></div>
-            <div class="form-group"> <label for="inputAddress5">Address</label> <input type="text" class="form-control"
-                id="inputAddress5" placeholder="P.O. Box 464, 5975 Eget Avenue"></div>
+            <div class="form-group col-md-6"> <label for="inputEmail4">Station</label> <input name="station" type="text" class="form-control"
+                id="inputEmail4" placeholder="Home ,Work & Others"></div>
+                <div class="form-group col-md-6"> <label for="inputEmail4">Phone</label> <input name="phone" type="tel" class="form-control"
+                  id="inputEmail4" placeholder="email@gmail.com"></div>
+            <div class="form-group"> <label for="inputAddress5">Address</label> <input name="address" type="text" class="form-control"
+                id="inputAddress5" placeholder="Gardikhana Lukier Road 793002"></div>
             <div class="form-row">
-              <div class="form-group col-md-6"> <label for="inputCompany5">Company</label> <input type="text"
-                  class="form-control" id="inputCompany5" placeholder="Nec Urna Suscipit Ltd"></div>
-              <div class="form-group col-md-4"> <label for="inputState5">State</label> <select id="inputState5"
-                  class="form-control">
-                  <option selected="">Choose...</option>
-                  <option>...</option>
-                </select></div>
-              <div class="form-group col-md-2"> <label for="inputZip5">Zip</label> <input type="text"
-                  class="form-control" id="inputZip5" placeholder="98232"></div>
+              <div class="form-group col-md-6"> <label for="inputCompany5">City</label> <input name="city" type="text"
+                  class="form-control" id="inputCompany5" placeholder="Shillong"></div>
+              <div class="form-group col-md-4"> <label for="inputState5">State</label>  <input name="state" type="text"
+                class="form-control" id="inputCompany5" placeholder="Meghalaya">
+              </div>
+              <div class="form-group col-md-2"> <label for="inputZip5">Zip</label> <input name="zip" type="text"
+                  class="form-control" id="inputZip5" placeholder="793002"></div>
             </div>
             <hr class="my-4">
+		  <input class='form2' type="submit" class="fadeIn fourth" value="Submit">
+
+
           </form>
         </div>
       </div>
     </div>
   </div>
   {% endblock body3 %}
+ 
