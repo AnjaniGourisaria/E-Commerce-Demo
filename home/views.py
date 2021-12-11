@@ -10,6 +10,8 @@ from django.contrib.auth import login as auth_login
 from .models import (Product , Contacts , Customer , Cart , OrderPlaced)
 import re
 from .forms import CustomerRegistrationForm
+import time
+
 # Create your views here.
 
 
@@ -61,13 +63,36 @@ from .forms import CustomerRegistrationForm
 #             return render(request, 'sign_up.html')
 
 
-    
+PRIVATE_IPS_PREFIX = ('10.', '172.', '192.', )
+
+def get_client_ip(request):
+    """get the client ip from the request
+    """
+    remote_address = request.META.get('REMOTE_ADDR')
+    # set the default value of the ip to be the REMOTE_ADDR if available
+    # else None
+    ip = remote_address
+    # try to get the first non-proxy ip (not a private ip) from the
+    # HTTP_X_FORWARDED_FOR
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        proxies = x_forwarded_for.split(',')
+        # remove the private ips from the beginning
+        while (len(proxies) > 0 and
+                proxies[0].startswith(PRIVATE_IPS_PREFIX)):
+            proxies.pop(0)
+        # take the first ip which is not a private one (of a proxy)
+        if len(proxies) > 0:
+            ip = proxies[0]
+
+    return ip
+
 def index(request):
+    ip = get_client_ip(request)
     p = Product.objects.filter(sub_category='Phone')
-    return render(request, 'index.html',{'p':p})
+    now = int(time.strftime('%H'))   
+    return render(request, 'index.html',{'p':p,'now':now})
     # return HttpResponse("this is done suessfully")
-
-
 
 
 def addcart(request):
@@ -77,17 +102,27 @@ def addcart(request):
         product = Product.objects.get(id=product_id)
         u=Cart(user=user, product=product)
         u.save()
-    return redirect('/cart')
+        #return update_cart(product)
+    else:
+        return redirect('/cart')
     
-        
-        
+# update cart for quantity update
+def  update_cart(request, product):
+    quantity = request.GET.get('quantity')
+    update=Cart(user=request.user,product=product)
+    update.save()
+            
+
 
 def sync_cart(request):
     if request.user.is_authenticated:
         product=Cart.objects.filter(user=request.user)
+        
         return render(request, 'addcart.html',{'products':product})
     else:
         redirect('sign_up')
+           
+        
 
 def sign_in(request):
     if request.method == 'POST':
@@ -144,7 +179,8 @@ def search(request):
 
 def shop(request):    
     # return HttpResponse("this is done suessfully")
-    return render(request, 'shop.html')
+    now = int(time.strftime('%H'))  
+    return render(request, 'shop.html',{'now':now})
    
         
 
@@ -152,6 +188,12 @@ def checkout(request):
     # return HttpResponse("this is done suessfully")
     return render(request, 'checkout.html')
 
+def about(request):
+    pass
+
+
+def help(request):
+    pass
 
 
 
@@ -175,11 +217,15 @@ def login(request):
             sign.save()
             loginform = Customer.objects.filter(user=request.user) 
             print("hello")
-            return render(request, 'login.html',{'loginform':loginform}) 
+            ip = get_client_ip(request)
+            now = int(time.strftime('%H'))  
+            return render(request, 'login.html',{'loginform':loginform,'now':now}) 
         else:
             loginform = Customer.objects.filter(user=request.user) 
             print("hello")
-            return render(request, 'login.html',{'loginform':loginform}) 
+            ip = get_client_ip(request)
+            now = int(time.strftime('%H'))  
+            return render(request, 'login.html',{'loginform':loginform,'now':now}) 
             #return render(request, 'login.html') 
     else:
         return redirect('sign_up')
@@ -220,13 +266,13 @@ def contactus(request):
             phoneerr=True
             return render(request, 'contactus.html',{'phoneerr':phoneerr})
         else:
+            ip = get_client_ip(request)
             user= Contacts(username=uname,email=email,phone=phone,msg=msg)
             user.save()
             fullsuscess=True
             messages.error(request,'Sussesfully Submitted the form')
             return render(request, 'contactus.html',{'fullsuscess':fullsuscess}) 
-            # print("[+]Debug: check all ",uname,email,phone,msg)
-            
+            # print("[+]Debug: check all ",uname,email,phone,msg)   
     else:
         return render(request, 'contactus.html',{'notpost':"it was not post method "})
     

@@ -17,8 +17,18 @@
                   <div class="col-md-7">
                     {% if loginform %}
                     {% for lf in loginform  %}
-                    <h4 class="mb-1"><b>Hi !</b> {{ request.user }}</h4>
-                    <p class="small mb-3"><span class="badge badge-dark">India</span></p>
+                    <h4 class="mb-1"><b>Hi !</b> 
+                      {% if now < 12 %}
+                      Good Morning, {{request.user | capfirst }}
+                      {% elif now > 12 %}
+                      Good Afternoon, {{request.user | capfirst }}
+                      {% elif now > 6 %}
+                      Good evening, {{ request.user | capfirst }}
+                      {% else %}
+                      {{ request.user | capfirst }}
+                      {% endif %}   
+                      </h4>
+                    <p class="small mb-3"><span class="badge badge-dark">India,{{lf.state}} </span></p>
                   </div>
                 </div>
                 <div class="row mb-4">
@@ -27,7 +37,7 @@
                   </div>
                   <div class="col">
                     <p class="small mb-0 text-muted">{{lf.phone}}</p>
-                    <p class="small mb-0 text-muted">email</p>
+                    <p class="small mb-0 text-muted">{{request.user.email}}</p>
                     <p class="small mb-0 text-muted">most recent order status</p>
                   </div>
                 </div>
@@ -75,7 +85,7 @@
                   class="form-control" id="inputZip5" placeholder="793002"></div>
             </div>
             <hr class="my-4">
-		  <input class='form2' type="submit" class="fadeIn fourth" value="Submit">
+		  <input class='btn btn-primary' type="submit" class="fadeIn fourth" value="Submit">
 
 
           </form>

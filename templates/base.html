@@ -2,121 +2,123 @@
 <html lang="en">
 
 <head>
-{% load static %}
-   <!-- basic -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- mobile metas -->
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    {% load static %}
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
-   <!-- site metas -->
-   <title> {% block title %} Home {% endblock title %}| The Indian Store </title>
-   <meta name="keywords" content="">
-   <meta name="description" content="">
-   <meta name="author" content="">
-   <!-- bootstrap css -->
-   <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
-   <!-- style css -->
-   <link rel="stylesheet" type="text/css" href=" {% static '/css/style.css' %}">
-   {% comment %} for shop.html {% endcomment %}
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/style.css' %}" />
-   {% comment %}
-   <!-- Google font -->
-   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
+    <!-- site metas -->
+    <title> {% block title %} Home {% endblock title %}| The Indian Store </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/bootstrap.min.css' %}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href=" {% static '/css/style.css' %}">
+    {% comment %} for shop.html {% endcomment %}
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/style.css' %}" />
+    {% comment %}
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
 
-   <!-- Bootstrap -->
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/bootstrap.min.css' %}" />
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/bootstrap.min.css' %}" />
 
-   <!-- Slick -->
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/slick.css' %}" />
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/slick.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
 
-   <!-- nouislider -->
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
 
-   <!-- Font Awesome Icon -->
+    <!-- Font Awesome Icon -->
 
-   <!-- Custom stlylesheet -->
-   {% comment %} end here {% endcomment %}
-   <link rel="stylesheet" type="text/css" href="{% static '/css/userAuth.min.css' %}">
-   <!-- Responsive-->
-   <link rel="stylesheet" href="{% static '/css/responsive.css' %}">
-   <!-- fevicon -->
-   <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
-   <!-- Scrollbar Custom CSS -->
-   <link rel="stylesheet" href="{% static '/css/jquery.mCustomScrollbar.min.css' %}">
-   <!-- Tweaks for older IEs-->
-   {% comment %}
-   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> {% endcomment%}
-   <!-- fonts -->
-   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-   <!-- font awesome is  -->
-   <link rel="stylesheet" type="text/css"
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-   <!--  -->
+    <!-- Custom stlylesheet -->
+    {% comment %} end here {% endcomment %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/userAuth.min.css' %}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{% static '/css/responsive.css' %}">
+    <!-- fevicon -->
+    <link rel="icon" href="{% static '/images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{% static '/css/jquery.mCustomScrollbar.min.css' %}">
+    <!-- Tweaks for older IEs-->
+    {% comment %}
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> {%endcomment%}
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome is  -->
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  -->
 
-   <!-- owl stylesheets -->
-   <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
-      rel="stylesheet">
-   <link rel="stylesheet" href="{% static '/css/owl.carousel.min.css' %}">
-   <link rel="stylesoeet" href="{% static 'static/css/owl.theme.default.min.css' %}">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-      media="screen">
-   <!-- Manual css -->
-   <link rel="stylesheet" href="{% static '/css/Auth.css' %}">
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/css/owl.carousel.min.css' %}">
+    <link rel="stylesoeet" href="{% static 'static/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+    <!-- Manual css -->
+    <link rel="stylesheet" href="{% static '/css/Auth.css' %}">
 
-   <!-- Font Awesome -->
-   {% comment %}
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" /> {%endcomment %}
-   <!-- Google Fonts -->
-   {% comment %}
-   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
-   <!-- MDB -->
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" /> {% endcomment%}
+    <!-- Font Awesome -->
+  
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />
+    
+    <!-- Google Fonts -->
+  
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" /> 
 
 
 
 
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-   <!------ Include the above in your HEAD tag ---------->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
 
-   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
-   <!-- End Of my css -->
-   <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
+    <!-- End Of my css -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
- 
 
-   <!-- Google font -->
-   {% comment %} <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
 
-   <!-- Bootstrap -->
-   <link type="text/css" rel="stylesheet" href="static/csss/bootstrap.min.css" />
+    <!-- Google font -->
+    {% comment %}
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
 
-   <!-- Slick -->
-   <link type="text/css" rel="stylesheet"  href="{% static '/csss/slick.css' %}" />
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/bootstrap.min.css' %}" />
 
-   <!-- nouislider -->
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/slick.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
 
-   {% comment %} <!-- Font Awesome Icon -->
-   <link rel="stylesheet" type="text/css"
-       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
-   <!-- Custom stlylesheet -->
-   <link type="text/css" rel="stylesheet" href="{% static '/csss/style.css' %}" />
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
+
+    {% comment %}
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static '/csss/style.css' %}" />
 
 
 
 </head>
 
-</head>
 
 <body>
     <!-- {% for message in messages %}
@@ -138,9 +140,19 @@
                 <ul class="header-links pull-right">
                     {% comment %} <li><a href="#"><i class="fa fa-dollar"></i> </a></li> {% endcomment %}
                     {% if user.is_authenticated %}
-                    <a href="{% url 'login' %}"><img src="https://img.icons8.com/material-sharp/24/000000/user.png"/><span
-                            class="padding_10">{{user.username }}</span></a>
-                    <a href="{% url 'log_out' %}"><img src="https://img.icons8.com/windows/20/000000/shutdown.png"/></a>
+                    <a href="{% url 'login' %}"><img
+                            src="https://img.icons8.com/material-sharp/24/000000/user.png" /><span class="padding_10">
+                            {% if now < 12 %} Good Morning, {{user.username | capfirst }} {% elif now > 12 %}
+                                Good Afternoon, {{user.username | capfirst }}
+                                {% elif now > 6 %}
+                                Good evening, {{user.username | capfirst }}
+                                {% else %}
+                                {{user.username | capfirst }}
+                                {% endif %}
+
+                        </span></a>
+                    <a href="{% url 'log_out' %}"><img
+                            src="https://img.icons8.com/windows/20/000000/shutdown.png" /></a>
                     {% else %}
                     <a href="{% url 'sign_in' %}"> <span class="padding_10">SignIn</span></a><span>|</span><a
                         href="{% url 'sign_up' %}">SignUp</span></a>
@@ -184,7 +196,7 @@
                                     <option value="8">Clothing, Shoes &amp; Accessories</option>
                                     <option value="9">Collectibles</option>
                                     <option value="10">Computers/Tablets &amp; Networking</option>
-                            </select>
+                                </select>
                                 <input name='searching' class="input" placeholder="Search here">
                                 <button class="search-btn" style="margin-right: -31px;">Search</button>
                             </form>
@@ -209,43 +221,44 @@
                             <div class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                     {% if user.is_authenticated %}
-                                    <img src="https://img.icons8.com/nolan/44/favorite-cart.png"/>
-                                    <a href="addcart"> Cart</a>
-                                    
-                                
-                                <div class="cart-dropdown">
-                                    <div class="cart-list">
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="static/imgs/product01.png" alt="">
-                                            </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                            </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
-                                        </div>
+                                    <img src="https://img.icons8.com/nolan/44/favorite-cart.png" />
+                                    <a href="{% url 'addcart' %}"> Cart</a>
 
-                                        <div class="product-widget">
-                                            <div class="product-img">
-                                                <img src="static/imgs/product02.png" alt="">
+
+                                    <div class="cart-dropdown">
+                                        <div class="cart-list">
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="{% static '/imgs/product01.png' %}" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                    <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
+                                                </div>
+                                                <button class="delete"><i class="fa fa-close"></i></button>
                                             </div>
-                                            <div class="product-body">
-                                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                                <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+
+                                            <div class="product-widget">
+                                                <div class="product-img">
+                                                    <img src="{% static '/imgs/product02.png' %}" alt="">
+                                                </div>
+                                                <div class="product-body">
+                                                    <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                    <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
+                                                </div>
+                                                <button class="delete"><i class="fa fa-close"></i></button>
                                             </div>
-                                            <button class="delete"><i class="fa fa-close"></i></button>
+                                        </div>
+                                        <div class="cart-summary">
+                                            <small>3 Item(s) selected</small>
+                                            <h5>SUBTOTAL: $2940.00</h5>
+                                        </div>
+                                        <div class="cart-btns">
+                                            <a href="{% url 'addcart'%}">View Cart</a>
+                                            <a href="{% url 'checkout' %}">Checkout <i
+                                                    class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </div>
-                                    <div class="cart-summary">
-                                        <small>3 Item(s) selected</small>
-                                        <h5>SUBTOTAL: $2940.00</h5>
-                                    </div>
-                                    <div class="cart-btns">
-                                        <a href="addcart">View Cart</a>
-                                        <a href="checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
-                                </div>
                             </div>
                             <!-- /Cart -->
                             {% else %}
@@ -314,7 +327,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product07.png" alt="">
+                                    <img src="{% static '/img/product07.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -327,7 +340,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product08.png" alt="">
+                                    <img src="{% static '/img/product08.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -340,7 +353,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product09.png" alt="">
+                                    <img src="{% static '/img/product09.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -355,7 +368,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
+                                    <img src="{% static '/img/product01.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -368,7 +381,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product02.png" alt="">
+                                    <img src="{% static '/img/product02.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -381,7 +394,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product03.png" alt="">
+                                    <img src="{% static '/img/product03.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -407,7 +420,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product04.png" alt="">
+                                    <img src="{% static '/img/product04.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -420,7 +433,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product05.png" alt="">
+                                    <img src="{% static '/img/product05.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -433,7 +446,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product06.png" alt="">
+                                    <img src="{% static '/img/product06.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -448,7 +461,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product07.png" alt="">
+                                    <img src="{% static '/img/product07.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -461,7 +474,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product08.png" alt="">
+                                    <img src="{% static '/img/product08.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -474,7 +487,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product09.png" alt="">
+                                    <img src="{% static '/img/product09.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -502,7 +515,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product01.png" alt="">
+                                    <img src="{% static '/img/product01.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -515,7 +528,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product02.png" alt="">
+                                    <img src="{% static '/img/product02.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -528,7 +541,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product03.png" alt="">
+                                    <img src="{% static '/img/product03.png"' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -543,7 +556,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product04.png" alt="">
+                                    <img src="{% static ' /img/product04.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -556,7 +569,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product05.png" alt="">
+                                    <img src="{% static '/img/product05.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -569,7 +582,7 @@
                             <!-- product widget -->
                             <div class="product-widget">
                                 <div class="product-img">
-                                    <img src="./img/product06.png" alt="">
+                                    <img src="{% static '/img/product06.png' %}" alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">Category</p>
@@ -632,8 +645,8 @@
                         <div class="footer">
                             <h3 class="footer-title">Information</h3>
                             <ul class="footer-links">
-                                <li><a href="about">About Us</a></li>
-                                <li><a href="contactus">Contact Us</a></li>
+                                <li><a href="{% url 'about' %}">About Us</a></li>
+                                <li><a href="{% url 'contactus' %}">Contact Us</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                                 <li><a href="#">Orders and Returns</a></li>
                                 <li><a href="#">Terms & Conditions</a></li>
@@ -645,11 +658,11 @@
                         <div class="footer">
                             <h3 class="footer-title">Service</h3>
                             <ul class="footer-links">
-                                <li><a href="sign_in">My Account</a></li>
-                                <li><a href="addcart">View Cart</a></li>
-                                <li><a href="shop">Shop</a></li>
-                                <li><a href="#">Track My Order</a></li>
-                                <li><a href="help">Help</a></li>
+                                <li><a href="{% url 'sign_in' %}">My Account</a></li>
+                                <li><a href="{% url 'addcart' %}">View Cart</a></li>
+                                <li><a href="{% url 'shop' %}">Shop</a></li>
+                                <li><a href="{% url 'tracker' %}">Track My Order</a></li>
+                                <li><a href="{% url 'help' %}">Help</a></li>
                             </ul>
                         </div>
                     </div>
@@ -695,7 +708,8 @@
     <script src="{% static '/jss/nouislider.min.js' %}"></script>
     <script src="{% static '/jss/jquery.zoom.min.js' %}"></script>
     <script src="{% static '/jss/main.js' %}"></script>
-    {% comment %} <!-- Font Awesome -->
+    {% comment %}
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet" />{%
     comment %}
     <!-- Google Fonts -->
@@ -704,34 +718,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css" rel="stylesheet" /> {% endcomment
     %} {% endcomment %}
 
-   <!-- Javascript files-->
-   <script src="static/js/jquery.min.js"></script>
-   <script src="static/js/popper.min.js"></script>
-   <script src="static/js/bootstrap.bundle.min.js"></script>
-   <script src="static/js/jquery-3.0.0.min.js"></script>
-   <script src="static/js/plugin.js"></script>
+    <!-- Javascript files-->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/jquery-3.0.0.min.js' %}"></script>
+    <script src="{% static '/js/plugin.js' %}"></script>
 
-   <!-- sidebar -->
-   <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="static/js/custom.js"></script>
-   <script>
-      function openNav() {
-         document.getElementById("mySidenav").style.width = "250px";
-      }
+    <!-- sidebar -->
+    <script src="{% static '/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+    <script src="{% static '/js/custom.js' %}"></script>
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
 
-      function closeNav() {
-         document.getElementById("mySidenav").style.width = "0";
-      }
-   </script>
-   <script src="{% static '/jss/jquery.min.js' %}"></script>
-   <script src="{% static '/jss/bootstrap.min.js' %}"></script>
-   <script src="{% static '/jss/slick.min.js' %}"></script>
-   <script src="{% static '/jss/nouislider.min.js' %}"></script>
-   <script src="{% static '/jss/jquery.zoom.min.js' %}"></script>
-   <script src="{% static '/jss/main.js' %}"></script>
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <script src="{% static '/jss/jquery.min.js' %}"></script>
+    <script src="{% static '/jss/bootstrap.min.js' %}"></script>
+    <script src="{% static '/jss/slick.min.js' %}"></script>
+    <script src="{% static '/jss/nouislider.min.js' %}"></script>
+    <script src="{% static '/jss/jquery.zoom.min.js' %}"></script>
+    <script src="{% static '/jss/main.js' %}"></script>
 
-   </div>
-   </div>
+    </div>
+    </div>
 </body>
 
 </html>

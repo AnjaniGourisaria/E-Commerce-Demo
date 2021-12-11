@@ -1,6 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Cart {% endblock title %}
 {% block body %}
+
+
+<!-- Google font -->
+{% comment %} <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
+
+<!-- Bootstrap -->
+<link type="text/css" rel="stylesheet" href="{% static '/csss/bootstrap.min.css' %}" />
+
+<!-- Slick -->
+<link type="text/css" rel="stylesheet"  href="{% static '/csss/slick.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
+
+<!-- nouislider -->
+<link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
+
+{% comment %} <!-- Font Awesome Icon -->
+<link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
+<!-- Custom stlylesheet -->
+
 <style type="text/css">
     .title {
         margin-bottom: 5vh

@@ -15,9 +15,12 @@ class ProductModelAdmin(admin.ModelAdmin):
     list_dislay= ['id','product_name','category','sub_category','brand','price','dprice','publish_date','stock','date']
     
 #Contacts Registraiton
-@admin.register(Contacts)
+
 class ContactsModelAdmin(admin.ModelAdmin):
     list_dislay= ['id','username','email','phone','publish_date']
+    
+admin.site.register(Contacts ,ContactsModelAdmin)
+
 
 #Cart Registraiton
 @admin.register(Cart)

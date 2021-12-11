@@ -6,7 +6,6 @@ from django.core.validators import MaxLengthValidator,MinValueValidator
 # Create your models here.
 
 class Contacts(models.Model):
-    id = models.AutoField(primary_key=True)
     username = models.CharField(max_length=15,default="")
     email = models.EmailField(max_length=30,default="")
     phone = models.IntegerField(default="")
@@ -14,8 +13,11 @@ class Contacts(models.Model):
     publish_date= models.DateTimeField(default=datetime.now,blank=True)
     space="--------------"
     def __str__(self):
-        self.list_dislay= [self.id,self.space,self.username,self.space,self.email,self.space,self.phone,self.space,self.publish_date]
-        return str(self.list_dislay)
+        # self.list_dislay= [self.id,self.space,self.username,self.space,self.email,self.space,self.phone,self.space,self.publish_date]
+        # return str(self.list_dislay)
+        return str(self.id)
+ 
+        
 STATION = (
     ('Home','Home'),
     ('Work','Work'),
@@ -24,7 +26,6 @@ STATION = (
 
 
 class Customer(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     phone = models.IntegerField()
@@ -39,7 +40,6 @@ class Customer(models.Model):
         return str(self.id)
     
 class Product(models.Model):
-    id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=40,default="")
     category = models.CharField(max_length=50,default="")
     sub_category = models.CharField(max_length=40,default="")
@@ -61,7 +61,6 @@ class Product(models.Model):
 
 
 class Cart(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
@@ -70,7 +69,6 @@ class Cart(models.Model):
         return str(self.id)
 
 class OrderPlaced(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE) 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
