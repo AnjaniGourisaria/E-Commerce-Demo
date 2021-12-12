@@ -181,7 +181,7 @@
                     <!-- SEARCH BAR -->
                     <div class="col-md-6">
                         <div class="header-search">
-                            <form method="POST" action="{% url 'search' %}">
+                            <form id="searchen" method="POST" action="{% url 'search' %}">
                                 {% csrf_token %}
                                 <select class="input-select"
                                     style="border-radius: 0px !important;border-block-color: aqua;margin-right: -122px;">
