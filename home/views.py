@@ -11,7 +11,8 @@ from .models import (Product , Contacts , Customer , Cart , OrderPlaced)
 import re
 from .forms import CustomerRegistrationForm
 import time
-
+from django.db.models import Q
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -62,6 +63,82 @@ import time
 #         else:
 #             return render(request, 'sign_up.html')
 
+# def sync_cart(request):
+#     if request.user.is_authenticated:
+#         product=Cart.objects.filter(user=request.user)
+#         amount= 0.0
+#         shipping_amount = 40.0
+#         total_amount = 0.0
+#         cart_product = [p for p in Cart.objects.all() if p.user == request.user ]
+#         if cart_product:
+#             for p in cart_product:
+#                 quantity_up = request.GET.get('quantity_up','') 
+#                 prod_id = request.GET.get('prod_id','') 
+#                 if quantity_up and prod_id:
+#                     product_qun = update_cart(request , quantity_up) 
+#                     print(product_qun , prod_id)
+#                     cp = Cart.objects.get(product=prod_id)
+#                     cp.user = request.user
+#                     cp.quantity= quantity_up
+#                     cp.save()
+#                 else:            
+#                     tempamont= (p.quantity  * p.product.dprice)
+#                     amount += tempamont
+#                     total_amount = amount + shipping_amount
+#             return render(request, 'addcart.html',{'products':product ,'total_amount':total_amount , 'shipping_amount':shipping_amount,'amount':amount,'quantity':p.quantity})
+#         else:
+#             redirect('sign_up')
+            
+# def plus_cart(request):
+#     if request.method == 'GET':
+#         prod_id = request.GET['prod_id']
+#         print(prod_id)
+#         c= Cart.objects.get(Q(product=prod_id) & Q(user=request.user))
+#         c.quantity += 1 
+#         c.save()
+#         amount= 0.0
+#         shipping_amount = 40.0
+#         total_amount = 0.0
+#         cart_product = [p for p in Cart.objects.all() if p.user == request.user ]
+#         if cart_product:
+#             for p in cart_product:
+#                 tempamont= (p.quantity * p.product.dprice)
+#                 amount += tempamont
+#                 total_amount = amount + shipping_amount
+                
+#             data= {
+#                 'quantity':c.quantity,
+#                 'amount':amount,
+#                 'total_amount':total_amount
+#                 }
+#             return JsonResponse(data)
+        
+
+# def minus_cart(request):
+#     if request.method == 'GET':
+#         prod_id = request.GET['prod_id']
+#         print("prod",prod_id)
+#         c = Cart.objects.filter(Q(product=prod_id) & Q(user=request.user))
+#         print("c",c)
+#         c.quantity-=1
+#         c.save()
+#         amount= 0.0
+#         shipping_amount = 40.0
+#         total_amount = 0.0
+#         cart_product = [p for p in Cart.objects.all() if p.user == request.user ]
+#         if cart_product:
+#             for p in cart_product:
+#                 tempamont= (p.quantity * p.product.dprice)
+#                 amount += tempamont
+#                 total_amount = amount + shipping_amount
+                
+#             data= {
+#                 'quantity':c.quantity,
+#                 'amount':amount,
+#                 'total_amount':total_amount
+#                 }
+#             return JsonResponse(data)
+        
 
 PRIVATE_IPS_PREFIX = ('10.', '172.', '192.', )
 
@@ -94,6 +171,14 @@ def index(request):
     return render(request, 'index.html',{'p':p,'now':now})
     # return HttpResponse("this is done suessfully")
 
+    
+# update cart for quantity update
+def  update_cart(request, quantity_up):
+    if quantity_up:
+        return quantity_up
+    else:
+        redirect('addcart')
+            
 
 def addcart(request):
     user = request.user
@@ -102,26 +187,64 @@ def addcart(request):
         product = Product.objects.get(id=product_id)
         u=Cart(user=user, product=product)
         u.save()
+        return redirect('cart/')
+        
         #return update_cart(product)
     else:
-        return redirect('/cart')
-    
-# update cart for quantity update
-def  update_cart(request, product):
-    quantity = request.GET.get('quantity')
-    update=Cart(user=request.user,product=product)
-    update.save()
-            
+        return redirect('cart/')
+
+
+
+
+
 
 
 def sync_cart(request):
     if request.user.is_authenticated:
-        product=Cart.objects.filter(user=request.user)
-        
-        return render(request, 'addcart.html',{'products':product})
+                quantity_up = request.GET.get('quantity_up','') 
+                prod_id = request.GET.get('prod_id','') 
+                if quantity_up and prod_id:
+                    product_qun = update_cart(request , quantity_up) 
+                    print(product_qun , prod_id)
+                    cp = Cart.objects.get(product=prod_id)
+                    cp.user = request.user
+                    cp.quantity= quantity_up
+                    cp.save()
+                    print('update in quantity')
+                cart_product = [p for p in Cart.objects.all() if p.user == request.user ]
+                amount = 0.0
+                if cart_product:
+                    for p in cart_product:
+                        print('wroking in loop')
+                        product=Cart.objects.filter(user=request.user)
+                        shipping_amount = 40.0
+                        tempamont= (p.quantity  * p.product.dprice)
+                        print(tempamont)
+                        amount += tempamont
+                        print(amount)
+                        total_amount = amount + shipping_amount
+                        print(total_amount)
+                    return render(request, 'addcart.html',{'products':product ,'total_amount':total_amount , 'shipping_amount':shipping_amount,'amount':amount,'quantity':p.quantity})
+                else:
+                    return render(request, 'addcart.html')
+            
+               
+               
+               
+def remove_cart(request):
+    if request.method == 'POST':
+        prod_id = request.POST['prod_id']
+        print(type(prod_id))
+        cp = Cart.objects.get(product=prod_id)
+        cp.user = request.user
+        cp.quantity = 0
+        cp.delete()
+        return redirect('addcart')
     else:
-        redirect('sign_up')
-           
+        return redirect('addcart')
+        
+  
+        
         
 
 def sign_in(request):
@@ -183,10 +306,13 @@ def shop(request):
     return render(request, 'shop.html',{'now':now})
    
         
+# return HttpResponse("this is done suessfully")
 
 def checkout(request):
-    # return HttpResponse("this is done suessfully")
-    return render(request, 'checkout.html')
+    customer = Customer.objects.filter(user=request.user)
+    cart = Cart.objects.filter(user=request.user)
+    return render(request, 'checkout.html',{'customer': customer, 'cart': cart})
+
 
 def about(request):
     pass

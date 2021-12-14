@@ -1,187 +1,85 @@
 {% extends 'base.html' %}
 {% block title %}Cart {% endblock title %}
 {% block body %}
+{% load static %}
 
-
-<!-- Google font -->
-{% comment %} <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet"> {% endcomment %}
-
-<!-- Bootstrap -->
-<link type="text/css" rel="stylesheet" href="{% static '/csss/bootstrap.min.css' %}" />
-
-<!-- Slick -->
-<link type="text/css" rel="stylesheet"  href="{% static '/csss/slick.css' %}" />
-<link type="text/css" rel="stylesheet" href="{% static '/csss/slick-theme.css' %}" />
-
-<!-- nouislider -->
-<link type="text/css" rel="stylesheet" href="{% static '/csss/nouislider.min.css' %}" />
-
-{% comment %} <!-- Font Awesome Icon -->
-<link rel="stylesheet" type="text/css"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> {% endcomment %}
-<!-- Custom stlylesheet -->
-
-<style type="text/css">
-    .title {
-        margin-bottom: 5vh
-    }
-    
-    .card {
-        margin: auto;
-        max-width: 950px;
-        width: 90%;
-        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: 1rem;
-        border: transparent
-    }
-    
-    @media(max-width:767px) {
-        .card {
-            margin: 3vh auto
-        }
-    }
-    
-    .cart {
-        background-color: #fff;
-        padding: 4vh 5vh;
-        border-bottom-left-radius: 1rem;
-        border-top-left-radius: 1rem
-    }
-    
-    @media(max-width:767px) {
-        .cart {
-            padding: 4vh;
-            border-bottom-left-radius: unset;
-            border-top-right-radius: 1rem
-        }
-    }
-    
-    .summary {
-        background-color: #ddd;
-        border-top-right-radius: 1rem;
-        border-bottom-right-radius: 1rem;
-        padding: 4vh;
-        color: rgb(65, 65, 65)
-    }
-    
-    @media(max-width:767px) {
-        .summary {
-            border-top-right-radius: unset;
-            border-bottom-left-radius: 1rem
-        }
-    }
-    
-    .summary .col-2 {
-        padding: 0
-    }
-    
-    .summary .col-10 {
-        padding: 0
-    }
-    
-    .row {
-        margin: 0
-    }
-    
-    .title b {
-        font-size: 1.5rem
-    }
-    
-    .col-2,
-    .col {
-        padding: 0 1vh
-    }
-    
-    a {
-        padding: 0 1vh
-    }
-    
-    .close {
-        margin-left: auto;
-        font-size: 0.7rem
-    }
-
-    .back-to-shop {
-        margin-top: 4.5rem
-    }
-    
-    h5 {
-        margin-top: 4vh
-    }
-    
-    hr {
-        margin-top: 1.25rem
-    }
-    
-    form {
-        padding: 2vh 0
-    }
-    
-    select {
-        border: 1px solid rgba(0, 0, 0, 0.137);
-        padding: 1.5vh 1vh;
-        margin-bottom: 4vh;
-        outline: none;
-        width: 100%;
-        background-color: rgb(247, 247, 247)
-    }
- 
-    .btn:hover {
-        color: white
-    }
-    
-
-    a:hover {
-        color: black;
-        text-decoration: none
-    }
-    
-</style> 
-<div class="card">
+<div class="container my-5">
     <div class="row">
-        <div class="col-md-8 cart">
-            <div class="title">
-                <div class="row">
-                    <div class="col">
-                        <h4><b>Shopping Cart |</b></h4>
+        <h1 class="text-center mb-5">Shopping Cart</h1>
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3>Cart</h3>
+                    <div class="row">
+                        <div class="col-sm-3 text-center align-self-center"><img
+                                src="{% static '/images/product/1.jpg'%}" alt="" srcset=""
+                                class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+                        <div class="col-sm-9">
+                            <div>
+                                <h5>Product 1</h5>
+                                <p class="mb-2 text-muted small">Description: Lorem ipsum dolor sit amet consectetur
+                                    adipisicing elit. Rerum quas, nihil vel velit sed, quos consequatur maiores odio
+                                    libero eius est in mollitia quo minus dolorum culpa consectetur, ipsam unde!</p>
+                                <div class="my-3">
+                                    <label for="quantity">Quantity:</label>
+                                    <a class="minus-cart btn"><i class="fas fa-minus-square fa-lg" style="
+                                        border-radius: 182px !important;
+                                        border-width: thick !important;
+                                    "></i></a>
+                                    <span id="quantity">3</span>
+                                    <a class="plus-cart btn"><i class="fas fa-plus-square fa-lg" style="
+                                        border-radius: 182px !important;
+                                        border-width: thick !important;
+                                    "></i></a>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <a href="#" class="btn btn-sm btn-secondary mr-3">Remove item </a>
+                                    <p class="mb-0"><span><strong>Rs. 110.00</strong></span></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col align-self-center text-right text-muted">3 items</div>
+                    
+                    
                 </div>
             </div>
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">T-Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a> </div>
-                    <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
-                </div>
-            </div>
-            <div class="back-to-shop"><a href="home">&leftarrow;</a><a href="home"><span class="text-muted">Back to shop</span></div></a>
         </div>
-        <div class="col-md-4 summary">
-            <div>
-                <h5><b>Summary</b></h5>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3>The Total Amount of</h3>
+                    <ul class="list-group">
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                            Amount<span>Rs. 430.00</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            Shipping<span>Rs. 70.00</span></li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                            <div>
+                                <strong>Total</strong> <small>(including VAT)</small>
+                            </div>
+                            <span><strong>Rs. 500.00</strong></span>
+                        </li>
+                    </ul>
+                    <div class="d-grid"><a href="{% url 'checkout' %}" class="btn btn-primary">Place Order</a></div>
+                </div>
             </div>
-            <hr>
-            <div class="row">
-                <div class="col" style="padding-left:0;">ITEMS 3</div>
-                <div class="col text-right">&euro; 132.00</div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="mb-4">We accept</h5>
+                    <img src="{% static 'app/images/payment.png' %}" alt="" class="img-fluid">
+                </div>
             </div>
-            <form>
-                <p>SHIPPING</p> <select>
-                    <option class="text-muted">Standard-Delivery- 45.00</option>
-                </select>
-                <p>Pin code</p> <input id="code" placeholder="Enter your code">
-            </form>
-            <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                <div class="col">TOTAL PRICE</div>
-                <div class="col text-right">&euro; 137.00</div>
-            </div> <a href="checkout"><button href="checkout" class="btn">CHECKOUT</button></a>
         </div>
     </div>
 </div>
-
 {% endblock body %}

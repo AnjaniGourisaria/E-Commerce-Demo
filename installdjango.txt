@@ -8,3 +8,7 @@ venv/Scripts/activate
  		django-admin startproject test_project 
 		 python .\manage.py startapp home 
 		python manage.py createsuperuser
+inside venv install pip
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+(venv) PS D:\VSCode\PycharmProjects\pythonProject\Gjango\venv\Scripts> 
+(venv) PS D:\VSCode\PycharmProjects\pythonProject\Gjango\venv\Scripts> python get-pip.py

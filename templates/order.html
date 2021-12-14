@@ -1,4 +1,23 @@
 {% extends 'loginbase.html' %}
-{% block title3 %}Password Manager{% endblock title3 %}
+{% block title3 %}Orders {% endblock title3 %}
 {% block body3 %}
+
+
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome {{request.user}}</h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid"><a href="{% url 'order' %}" class="btn btn-primary">Orders</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 offset-sm-1">
+            <div class="row">
+                <div class="col-sm-6">Order 1</div>
+                <div class="col-sm-6">Order 2</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock body3 %}

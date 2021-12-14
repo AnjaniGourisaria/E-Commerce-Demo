@@ -66,7 +66,13 @@ class Cart(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     space="--------------"
     def __str__(self):
-        return str(self.id)
+         return str(self.id)
+
+@property 
+def get_q_and_dprice(self):
+    tempamont = self.quantity * self.product.dprice
+    return tempamont
+
 
 class OrderPlaced(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
