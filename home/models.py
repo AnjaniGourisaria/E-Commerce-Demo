@@ -65,13 +65,14 @@ class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     space="--------------"
+    
     def __str__(self):
          return str(self.id)
 
-@property 
-def get_q_and_dprice(self):
-    tempamont = self.quantity * self.product.dprice
-    return tempamont
+    @property 
+    def get_q_and_dprice(self):
+        tempamont = self.quantity * self.product.dprice
+        return tempamont
 
 
 class OrderPlaced(models.Model):
@@ -82,3 +83,10 @@ class OrderPlaced(models.Model):
     ordered_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50,default='Pending')
     space="--------------"
+    
+class Wish(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return str(self.id)

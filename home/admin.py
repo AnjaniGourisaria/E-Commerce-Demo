@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import (Product , Contacts , Customer , Cart , OrderPlaced)
+from .models import (Product , Contacts , Customer , Cart , OrderPlaced , Wish)
 # Register your models here.
 # admin.site.register(ProdDetails)
 
@@ -32,4 +32,5 @@ class CartModelAdmin(admin.ModelAdmin):
 @admin.register(OrderPlaced)
 class OrderPlacedModelAdmin(admin.ModelAdmin):
     list_dislay= ['id','user','customer','product','quantity','ordered_date','status']
-    
+
+admin.site.register(Wish)

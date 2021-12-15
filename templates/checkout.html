@@ -2,15 +2,33 @@
 {% load static %}
 {% block title %}Checkout {% endblock title %}
 {% block body %}
+
+
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/app_modules.chunk.94b5e7.css">
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/app.chunk.dd97f3.css">
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/NavMenu.chunk.235574.css">
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/app_modules.chunk.94b5e7.css">
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/NavMenu.chunk.235574.css">
+<link rel="stylesheet" type="text/css"
+    href="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/css/CartPage.chunk.a9327f.css">
+
+
 <div class="_1Er18h">
     <div class="_6t1WkM _3HqJxg">
         <div class="_1YokD2 _2GoDe3 col-12-12">
             <div class="_1YokD2 _3Mn1Gg" style="flex-grow: 1; overflow: visible;">
+                {% for cart in carts  %}
+
                 <div class="_1YokD2 _3Mn1Gg col-12-12" style="box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;">
                     <div class="_1YokD2 _2GoDe3 col-12-12" style="background-color: rgb(255, 255, 255);">
                         <div class="_1AtVbE col-3-12">
                             <div class="_1-GQyH">
-                                <div class="_3g_HeN">My Cart (1)</div>
+                                <div class="_3g_HeN"> Review Hi {{request.user}}</div>
                                 <div></div>
                             </div>
                         </div>
@@ -31,21 +49,21 @@
                                     href="/man-company-luxury-edp-perfume-men-long-lasting-fragrance-premium-spray-gift-set-30ml-4-eau-de-parfum-120-ml/p/itm49003b4136f4b?pid=PERG4GFQ4F4AGRVN&amp;lid=LSTPERG4GFQ4F4AGRVNYPBKYZ&amp;marketplace=FLIPKART">
                                     <div class="CXW8mj" style="height: 112px; width: 112px;"><img
                                             class="_396cs4 _3exPp9" alt=""
-                                            src="https://rukminim1.flixcart.com/image/224/224/krdtlzk0/perfume/e/f/z/120-luxury-edp-perfume-for-men-long-lasting-fragrance-premium-original-imag56s2ncejrsfp.jpeg?q=90">
+                                            src="{{cart.product.image.url}}">
                                     </div>
                                 </a>
+                                
                                 <div class="_3fSRat">
                                     <div class="_2-uG6-"><a class="_2Kn22P gBNbID"
                                             href="/man-company-luxury-edp-perfume-men-long-lasting-fragrance-premium-spray-gift-set-30ml-4-eau-de-parfum-120-ml/p/itm49003b4136f4b?pid=PERG4GFQ4F4AGRVN&amp;lid=LSTPERG4GFQ4F4AGRVNYPBKYZ&amp;marketplace=FLIPKART">THE
-                                            MAN COMPANY Luxury EDP Perfume for Men | Long Lasting Fragrance | Premium
-                                            Spray | Gift Set for Men | 30ml *4 Eau de Parfum - 120 ml</a></div>
-                                    <div class="_20RCA6"> For Men &amp; Women </div>
-                                    <div class="_3ZS8sw">Seller:The Man Company<img class="WC-2wP"
+                                            {{cart.product.product_name}}</a></div>
+                                    <div class="_20RCA6">{{cart.product.category}}</div>
+                                    <div class="_3ZS8sw">Seller:<img class="WC-2wP"
                                             src="//static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png">
-                                    </div><span class="_2-ut7f _1WpvJ7">₹1,677</span><span
-                                        class="_2-ut7f _2xc6hH">₹2,396</span><span class="dML6Ak">30% Off</span>
+                                    </div><span class="_2-ut7f _1WpvJ7">₹ {{cart.product.dprice}}</span><span
+                                        class="_2-ut7f _2xc6hH">₹{{cart.product.price}}</span><span class="dML6Ak">30% Off</span>
                                     <div class="_3zPVJV">
-                                        <div class="ebO6Mt" id="offers-LSTPERG4GFQ4F4AGRVNYPBKYZ">3 offers available<svg
+                                        <div class="ebO6Mt" id="offers-LSTPERG4GFQ4F4AGRVNYPBKYZ"> offers available<svg
                                                 width="14" height="14" xmlns="http://www.w3.org/2000/svg"
                                                 class="_3GN0Y0">
                                                 <g fill="none">
@@ -57,6 +75,7 @@
                                             </svg></div>
                                     </div>
                                 </div>
+                                
                                 <div class="_2zbf83">
                                     <ul class="_1ZEsQ4">
                                         <li class="JEy4SL">
@@ -70,23 +89,21 @@
                             </div>
                             <div class="nZz3kj _1hNI6F">
                                 <div class="_1uc2IE">
-                                    <div class="_3dY_ZR"><button class="_23FHuj" disabled=""> – </button>
+                                    <!-- <div class="_3dY_ZR"><button class="_23FHuj" disabled=""> – </button>
                                         <div class="_26HdzL"><input type="text" class="_253qQJ" value="1"></div><button
                                             class="_23FHuj"> + </button>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="_10vWcL td-FUv WDiNrH">
                                     <div class="_3dsJAO">Save for later</div>
-                                    <div class="_3dsJAO">Remove</div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>]
+                    {% endfor %}
                     <div class="_1AtVbE col-12-12 _78xt5Y">
                         <div class="VUS-tD eBV0fb">
-                            <form method="post" action="https://www.flipkart.com/checkout/init?loginFlow=true"><input
-                                    type="hidden" name="domain" value="physical"><button
-                                    class="_2KpZ6l _2ObVJD _3AWRsL"><span>Place Order</span></button></form>
+                            <input type="hidden" name="domain" value="physical"><button class="_2KpZ6l _2ObVJD _3AWRsL"><span>Place Order</span></button>
                         </div>
                     </div>
                 </div>
@@ -99,18 +116,18 @@
                                 <div class="Ob17DV">
                                     <div class="_24KATy">
                                         <div class="_2npqm0">Price (1 item)</div>
-                                    </div><span> ₹2,396</span>
+                                    </div><span> ₹2,396----</span>
                                 </div>
                                 <div class="Ob17DV">
                                     <div class="_24KATy">
                                         <div class="_2npqm0">Discount</div>
                                     </div>
-                                    <div class="_1YVZr_">− ₹719</div>
+                                    <div class="_1YVZr_">− </div>
                                 </div>
                                 <div class="Ob17DV">
                                     <div class="_24KATy">
                                         <div class="_2npqm0">Delivery Charges</div>
-                                    </div><span><span class="_1YVZr_ _33nGE1">Free</span></span>
+                                    </div><span><span class="_1YVZr_ _33nGE1"></span></span>
                                 </div>
                                 <div class="_3LxTgx">
                                     <div class="Ob17DV">
@@ -127,7 +144,7 @@
                                         </span>
                                     </div>
                                 </div>
-                                <div class="_3s5O6i">You will save ₹719 on this order</div>
+
                             </div>
                         </div>
                     </div>
@@ -136,14 +153,42 @@
                     <div class="_1AtVbE col-12-12">
                         <div class="_124baV">
                             <div class="_1RVm3P">Safe and Secure Payments.Easy returns.100% Authentic products.</div>
+                            {% for cus in customer %}
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm-4 offset-sm-1">
+                                        <h4>Select Shipping Address</h4>
+                                        <hr>
+                                        <form action="tracker">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5>{{cus.name}}</h5>
+                                                    <p>{{cus.station}}</p>
+                                                    <p>{{cus.locality}}</p>
+                                                    <p>{{cus.phone}}</p>
+                                                    <p>{{cus.zipcode}} {{cus.state}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-check mt-2 mb-5">
+                                                <input class="form-check-input" type="radio" value="">
+                                                <label class="form-check-label fw-bold" for="">
+                                                    Address: {{ forloop.counter }} </label>
+                                            </div>
+                                            <div class="text-end">
+                                                <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Placed
+                                                    Ordered</button> -->
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<!-- <div class="container">
+        <!-- <div class="container">
     <div class="row mt-5">
         
         <div class="col-sm-6">
@@ -187,4 +232,4 @@ Shiping Address
     </div>
 </div> -->
 
-{% endblock body %}
+        {% endblock body %}

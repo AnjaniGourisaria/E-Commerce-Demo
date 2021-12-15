@@ -142,7 +142,8 @@
                     {% if user.is_authenticated %}
                     <a href="{% url 'login' %}"><img
                             src="https://img.icons8.com/material-sharp/24/000000/user.png" /><span class="padding_10">
-                            {% if now < 12 %} Good Morning, {{user.username | capfirst }} {% elif now > 12 %}
+                            {% if now < 12 %} Good Morning, {{user.username | capfirst }} 
+                            {% elif now > 12 %}
                                 Good Afternoon, {{user.username | capfirst }}
                                 {% elif now > 6 %}
                                 Good evening, {{user.username | capfirst }}

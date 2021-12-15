@@ -1,0 +1,51 @@
+{% extends 'loginbase.html' %}
+{% block title3 %}{% endblock title3 %}
+
+
+{% block body3 %}
+
+<div class="row mt-5 align-items-center">
+    <div class="col-md-3 text-center mb-5">
+      <div class="avatar avatar-xl"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."
+          class="avatar-img rounded-circle"></div>
+    </div>
+    <div class="col">
+      <div class="row align-items-center">
+        <div class="col-md-7">
+          
+          
+          <h4 class="mb-1"><b>Hi !</b>
+            {% if now < 12 %} Good Morning, {{request.user | capfirst }} 
+            {% elif now > 12 %}
+              Good Afternoon, {{request.user | capfirst }}
+              {% elif now > 6 %}
+              Good evening, {{ request.user | capfirst }}
+              {% else %}
+              {{ request.user | capfirst }}
+              {% endif %}
+          </h4>
+          <p class="small mb-3"><span class="badge badge-dark">India,{{customer.state}} </span></p>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <div class="col-md-7">
+          <p class="text-muted"> {{customer.locality}} </p>
+        </div>
+        <div class="col">
+          <p class="small mb-0 text-muted">{{customer.phone}}</p>
+          <p class="small mb-0 text-muted">{{request.user.email}}</p>
+          <p class="small mb-0 text-muted">most recent order status</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% if carts %}
+<form action="{% url 'payment' %}" method="GET">
+  <input type="hidden" name="cusid" value="{{customer.id}}" >
+  <input type="submit" class="btn btn-primary" value="Order Via Cash on delivery" >
+</form>
+  <a href="{% url 'order' %}"><input type="submit" class="btn btn-primary" value="PayPal" ></a>
+
+{% endif %}
+  
+{% endblock body3 %}

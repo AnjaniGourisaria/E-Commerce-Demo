@@ -13,8 +13,12 @@
         </div>
         <div class="col-sm-9 offset-sm-1">
             <div class="row">
-                <div class="col-sm-6">Order 1</div>
-                <div class="col-sm-6">Order 2</div>
+                {% for orc in order_recived  %}
+                <div class="col-sm-6"> </div>
+                
+                <div class="col-sm-6" style="margin-right: 1px;" >{{ orc.product.product_name }}</div>
+                <div class="col-sm-6">Status: {{ orc.status }}</div>
+                {% endfor %}
             </div>
         </div>
     </div>

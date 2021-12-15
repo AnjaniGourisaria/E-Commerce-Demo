@@ -213,11 +213,11 @@ def sync_cart(request):
                     print('update in quantity')
                 cart_product = [p for p in Cart.objects.all() if p.user == request.user ]
                 amount = 0.0
+                shipping_amount = 40.0
                 if cart_product:
                     for p in cart_product:
                         print('wroking in loop')
                         product=Cart.objects.filter(user=request.user)
-                        shipping_amount = 40.0
                         tempamont= (p.quantity  * p.product.dprice)
                         print(tempamont)
                         amount += tempamont
@@ -310,9 +310,30 @@ def shop(request):
 
 def checkout(request):
     customer = Customer.objects.filter(user=request.user)
-    cart = Cart.objects.filter(user=request.user)
-    return render(request, 'checkout.html',{'customer': customer, 'cart': cart})
+    carts = Cart.objects.filter(user=request.user)
+    if customer and carts:
+        now = int(time.strftime('%H')) 
+        return render(request, 'check.html',{'customer': customer, 'carts': carts,'now':now})
+    else:
+        now = int(time.strftime('%H'))
+        return order(request)
 
+def payment(request):
+    cusid = request.GET['cusid']
+    print(cusid)
+    customer= Customer.objects.get(id=cusid)
+    cart = Cart.objects.filter(user=request.user)
+    now = int(time.strftime('%H'))
+    for c in cart:
+        p=OrderPlaced(user=request.user,customer=customer,product=c.product,quantity=c.quantity)
+        p.save()
+        c.delete()
+    return render(request, 'order.html',{'now':now})
+    
+def order(request):
+    op = OrderPlaced.objects.filter(user=request.user)
+    return render(request, 'order.html',{'order_recived':op})
+    
 
 def about(request):
     pass
@@ -413,8 +434,6 @@ def products(request,id):
 
 
     
-def order(request):
-        return render(request, 'order.html')
 
 
     
