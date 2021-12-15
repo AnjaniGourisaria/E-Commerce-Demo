@@ -1,36 +1,75 @@
 from django.contrib import admin
 from .models import (Product , Contacts , Customer , Cart , OrderPlaced , Wish)
 # Register your models here.
+from django.utils.html import format_html
 # admin.site.register(ProdDetails)
 
 #Customer Registraiton
-@admin.register(Customer)
 class CustomerModelAdmin(admin.ModelAdmin):
-    model = Customer
-    list_dislay= ['id','user','name','phone','station','locality','city','zipcode','state','date']
+    list_display= ('id','user','name','phone','station','locality','city','zipcode','state','date','is_deleted')
+    list_display_links= ('id','user','name','phone','station','locality','city','zipcode','state','date')
+    list_filter = ('is_deleted','date')
+    save_on_top = True
+    list_per_page = 20
+    
+        
+admin.site.register(Customer,CustomerModelAdmin)
 
 #Product Registraiton
-@admin.register(Product)
 class ProductModelAdmin(admin.ModelAdmin):
-    list_dislay= ['id','product_name','category','sub_category','brand','price','dprice','publish_date','stock','date']
+    readonly_fields = ('photo',)
+    list_display= ('id','product_name','category','sub_category','brand','price','dprice','publish_date','photo','stock','is_deleted')
+    list_display_links=  ('id','product_name','category','sub_category','brand','price','dprice','publish_date','photo','stock','is_deleted')
+    list_filter = ('is_deleted','publish_date')
+    save_on_top = True
+    list_per_page = 20
     
+    def photo(self,obj):
+        return format_html(f'<img src="/media/{obj.image}" style="height:100px;width:100px">')
+    
+admin.site.register(Product,ProductModelAdmin)
+
 #Contacts Registraiton
 
 class ContactsModelAdmin(admin.ModelAdmin):
-    list_dislay= ['id','username','email','phone','publish_date']
+    list_display= ('id','username','email','phone','publish_date','is_deleted')
+    list_display_links= ('id','username','email','phone','publish_date','is_deleted')
+    list_filter = ('is_deleted','publish_date')
+    save_on_top = True
+    list_per_page = 20
     
 admin.site.register(Contacts ,ContactsModelAdmin)
 
 
 #Cart Registraiton
-@admin.register(Cart)
 class CartModelAdmin(admin.ModelAdmin):
-    list_dislay= ['id','user','product','quantity']
+    list_display= ('id','user','product','quantity','is_deleted')
+    list_display_links = ('id','user','product','quantity','is_deleted')
+    list_filter = ('is_deleted',)
+    save_on_top = True
+    list_per_page = 20
     
+    
+admin.site.register(Cart,CartModelAdmin)
+
 
 #OrderPlaced Registraiton
-@admin.register(OrderPlaced)
 class OrderPlacedModelAdmin(admin.ModelAdmin):
-    list_dislay= ['id','user','customer','product','quantity','ordered_date','status']
+    list_display= ('id','user','customer','product','quantity','ordered_date','status','is_deleted')
+    list_display_links = ('id','user','customer','product','quantity','ordered_date','status','is_deleted')
+    list_filter = ('is_deleted','ordered_date')
+    save_on_top = True
+    list_per_page = 20
+    
+admin.site.register(OrderPlaced , OrderPlacedModelAdmin)
 
-admin.site.register(Wish)
+
+
+class WishModelAdmin(admin.ModelAdmin):
+    list_display= ('id','user','product','is_deleted')
+    list_display_links = ('id','user','product','is_deleted')
+    list_filter = ('is_deleted',)
+    save_on_top = True
+    list_per_page = 20
+    
+admin.site.register(Wish, WishModelAdmin)

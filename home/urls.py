@@ -20,6 +20,9 @@ from django.urls import path
 from home import views
 from home.views import CustumerRegestrationView
 
+admin.site.site_title = "The Indian Store"
+admin.site.site_header = "The Indian Store"
+
 urlpatterns = [
     # path("electronic",views.electronic,name='electronic'),
     # path('',views.ProductView.as_view(),name='home'),

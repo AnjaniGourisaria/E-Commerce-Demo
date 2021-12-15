@@ -13,6 +13,7 @@ from .forms import CustomerRegistrationForm
 import time
 from django.db.models import Q
 from django.http import JsonResponse
+
 # Create your views here.
 
 
@@ -139,7 +140,13 @@ from django.http import JsonResponse
 #                 }
 #             return JsonResponse(data)
         
-
+def checking_login(request):
+    if request.user.is_authenticated:
+        print("Checking login")
+        return 
+    else:
+        return redirect('sign_up')
+    
 PRIVATE_IPS_PREFIX = ('10.', '172.', '192.', )
 
 def get_client_ip(request):
@@ -165,13 +172,14 @@ def get_client_ip(request):
     return ip
 
 def index(request):
+    checking_login(request)
     ip = get_client_ip(request)
     p = Product.objects.filter(sub_category='Phone')
     now = int(time.strftime('%H'))   
     return render(request, 'index.html',{'p':p,'now':now})
     # return HttpResponse("this is done suessfully")
 
-    
+
 # update cart for quantity update
 def  update_cart(request, quantity_up):
     if quantity_up:
@@ -179,7 +187,7 @@ def  update_cart(request, quantity_up):
     else:
         redirect('addcart')
             
-
+# @login_required 
 def addcart(request):
     user = request.user
     product_id = request.GET.get('product_id')
@@ -198,7 +206,7 @@ def addcart(request):
 
 
 
-
+# @login_required 
 def sync_cart(request):
     if request.user.is_authenticated:
                 quantity_up = request.GET.get('quantity_up','') 
@@ -230,7 +238,7 @@ def sync_cart(request):
             
                
                
-               
+# @login_required                
 def remove_cart(request):
     if request.method == 'POST':
         prod_id = request.POST['prod_id']
@@ -288,7 +296,7 @@ class CustumerRegestrationView(View):
         
         
         
-        
+       
 def search(request):
     # return HttpResponse("this is done suessfully")
     product_name = request.POST['searching']
@@ -307,7 +315,7 @@ def shop(request):
    
         
 # return HttpResponse("this is done suessfully")
-
+# @login_required 
 def checkout(request):
     customer = Customer.objects.filter(user=request.user)
     carts = Cart.objects.filter(user=request.user)
@@ -318,6 +326,8 @@ def checkout(request):
         now = int(time.strftime('%H'))
         return order(request)
 
+
+# @login_required 
 def payment(request):
     cusid = request.GET['cusid']
     print(cusid)
@@ -329,7 +339,8 @@ def payment(request):
         p.save()
         c.delete()
     return render(request, 'order.html',{'now':now})
-    
+
+# @login_required 
 def order(request):
     op = OrderPlaced.objects.filter(user=request.user)
     return render(request, 'order.html',{'order_recived':op})
@@ -343,7 +354,7 @@ def help(request):
     pass
 
 
-
+# @login_required 
 def login(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -379,7 +390,7 @@ def login(request):
 
 
    
-   
+# @login_required  
 def log_out(request):
         logout(request)
         return redirect('/')
@@ -426,7 +437,7 @@ def contactus(request):
 
 
 
-    
+   
 def products(request,id):
     p = Product.objects.filter(id=id)
     return render(request, 'products.html',{'p':p})
@@ -437,14 +448,14 @@ def products(request,id):
 
 
     
-
+# @login_required 
 def tracker(request):
         return render(request, 'tracker.html')
     
 
 
 
-
+# @login_required 
 def passwordchange(request):
     return render(request, 'passwordchange.html')
  

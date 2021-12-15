@@ -2,7 +2,9 @@ from django.db import models
 from datetime import datetime   
 from django.contrib.auth.models import User 
 from django.core.validators import MaxLengthValidator,MinValueValidator
-
+# from ckeditor.fields import RichTextField
+# # msg = RichTextField(max_length=900,default="")
+# 
 # Create your models here.
 
 class Contacts(models.Model):
@@ -11,10 +13,9 @@ class Contacts(models.Model):
     phone = models.IntegerField(default="")
     msg = models.CharField(max_length=900,default="")
     publish_date= models.DateTimeField(default=datetime.now,blank=True)
-    space="--------------"
+    is_deleted = models.BooleanField(default=False)
+    
     def __str__(self):
-        # self.list_dislay= [self.id,self.space,self.username,self.space,self.email,self.space,self.phone,self.space,self.publish_date]
-        # return str(self.list_dislay)
         return str(self.id)
  
         
@@ -35,7 +36,8 @@ class Customer(models.Model):
     zipcode = models.PositiveIntegerField()
     state = models.CharField(max_length=30)
     date = models.DateTimeField(default=datetime.now,blank=True)
-    space="--------------"
+    is_deleted = models.BooleanField(default=False)
+    # created_date = models.DateField(auto_created=True,blank=True,null=True)
     def __str__(self):
         return str(self.id)
     
@@ -53,8 +55,9 @@ class Product(models.Model):
     image2 = models.ImageField(upload_to='img/',default="",blank=True)
     image3 = models.ImageField(upload_to='img/',default="",blank=True)
     image4 = models.ImageField(upload_to='img/',default="",blank=True)
+    is_deleted = models.BooleanField(default=False)
     
-    space="--------------"
+    
     def __str__(self):
         return str(self.id)
 
@@ -64,7 +67,8 @@ class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
-    space="--------------"
+    is_deleted = models.BooleanField(default=False)
+    created_date = models.DateField(auto_created=True,blank=True,null=True)
     
     def __str__(self):
          return str(self.id)
@@ -82,11 +86,12 @@ class OrderPlaced(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     ordered_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50,default='Pending')
-    space="--------------"
+    is_deleted = models.BooleanField(default=False)
     
 class Wish(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    
+    is_deleted = models.BooleanField(default=False)
+    created_date = models.DateField(auto_created=True,blank=True,null=True)
     def __str__(self):
         return str(self.id)
