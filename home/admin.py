@@ -28,6 +28,7 @@ class ProductModelAdmin(admin.ModelAdmin):
     def photo(self,obj):
         return format_html(f'<img src="/media/{obj.image}" style="height:100px;width:100px">')
     
+    
 admin.site.register(Product,ProductModelAdmin)
 
 #Contacts Registraiton
@@ -57,12 +58,16 @@ admin.site.register(Cart,CartModelAdmin)
 
 #OrderPlaced Registraiton
 class OrderPlacedModelAdmin(admin.ModelAdmin):
-    list_display= ('id','user','customer','product','quantity','ordered_date','status','is_deleted')
-    list_display_links = ('id','user','customer','product','quantity','ordered_date','status','is_deleted')
+    list_display= ('id','user','customerid','productid','photoid','quantity','ordered_date','status','is_deleted')
+    list_display_links = ('id','user','customerid','productid','photoid','quantity','ordered_date','status','is_deleted')
     list_filter = ('is_deleted','ordered_date')
     save_on_top = True
     list_per_page = 20
-    search_fields =('id','user','customer','product','quantity','ordered_date','status','is_deleted')
+    search_fields =('id','user','customerid','product','quantity','ordered_date','status','is_deleted')
+    
+   
+    
+    
 admin.site.register(OrderPlaced , OrderPlacedModelAdmin)
 
 

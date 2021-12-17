@@ -2,9 +2,10 @@ from django.db import models
 from datetime import datetime   
 from django.contrib.auth.models import User 
 from django.core.validators import MaxLengthValidator,MinValueValidator
+from django.utils.html import format_html
 # from ckeditor.fields import RichTextField
 # # msg = RichTextField(max_length=900,default="")
-# 
+#   
 # Create your models here.
 
 class Contacts(models.Model):
@@ -46,6 +47,7 @@ class Customer(models.Model):
     def get_id(self):
         return str(self.id)
     
+    
 class Product(models.Model):
     product_name = models.CharField(max_length=40,default="")
     category = models.CharField(max_length=50,default="")
@@ -66,6 +68,7 @@ class Product(models.Model):
     def __str__(self):
         return str(self.id)
 
+    
 
 
 class Cart(models.Model):
@@ -92,6 +95,20 @@ class OrderPlaced(models.Model):
     ordered_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=50,default='Pending')
     is_deleted = models.BooleanField(default=False)
+    
+    @property
+    def customerid(self):
+        return self.customer.name
+    
+    @property
+    def productid(self):
+        return self.product.product_name
+    
+    @property
+    def photoid(self):
+        return self.product.image.url
+    
+    
     
 class Wish(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)

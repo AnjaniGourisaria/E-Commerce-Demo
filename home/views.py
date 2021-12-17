@@ -361,6 +361,8 @@ def help(request):
 def login(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
+            user_agents=  request.GET.get('user_agents')
+            print("user",user_agents)
             username = request.user
             name = request.POST['name']
             name2 = request.POST['name2']
@@ -380,13 +382,13 @@ def login(request):
             print("hello")
             ip = get_client_ip(request)
             now = int(time.strftime('%H'))  
-            return render(request, 'login.html',{'loginform':loginform,'now':now}) 
+            return render(request, 'login.html',{'loginform':loginform,'now':now,'ip':ip}) 
         else:
             loginform = Customer.objects.filter(user=request.user) 
             print("hello")
             ip = get_client_ip(request)
             now = int(time.strftime('%H'))  
-            return render(request, 'login.html',{'loginform':loginform,'now':now}) 
+            return render(request, 'login.html',{'loginform':loginform,'now':now,'ip':ip}) 
             #return render(request, 'login.html') 
     else:
         return redirect('sign_up')

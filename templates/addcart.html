@@ -104,7 +104,7 @@ $('.plus-cart').click(function () {
             prod_id:id
         },
         success: function(data) { // <!-- By views.py -->
-    //      console.log(data)  
+            //console.log(data)  
             eml.innerText = data.quantity
             document.getElementById("amount").innerHTML = data.amount
             document.getElementById("totalamount").innerHTML = data.totalamount
