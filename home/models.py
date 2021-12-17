@@ -38,7 +38,12 @@ class Customer(models.Model):
     date = models.DateTimeField(default=datetime.now,blank=True)
     is_deleted = models.BooleanField(default=False)
     # created_date = models.DateField(auto_created=True,blank=True,null=True)
+    
     def __str__(self):
+        return str(self.id)
+    
+    @property
+    def get_id(self):
         return str(self.id)
     
 class Product(models.Model):
@@ -95,3 +100,9 @@ class Wish(models.Model):
     created_date = models.DateField(auto_created=True,blank=True,null=True)
     def __str__(self):
         return str(self.id)
+    
+class Coupon(models.Model):
+    discount = models.CharField(max_length=7,default=""), 
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    is_deleted = models.BooleanField(default=False)
+    created_date = models.DateField(auto_created=True,blank=True,null=True)

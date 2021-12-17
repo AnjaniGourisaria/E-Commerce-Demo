@@ -3,7 +3,8 @@
 
 
 {% block body3 %}
-
+{% if carts %}
+{% for c in customer  %}
 <div class="row mt-5 align-items-center">
     <div class="col-md-3 text-center mb-5">
       <div class="avatar avatar-xl"> <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="..."
@@ -24,26 +25,27 @@
               {{ request.user | capfirst }}
               {% endif %}
           </h4>
-          <p class="small mb-3"><span class="badge badge-dark">India,{{customer.state}} </span></p>
+          <p class="small mb-3"><span class="badge badge-dark">India,{{c.state}} </span></p>
         </div>
       </div>
       <div class="row mb-4">
         <div class="col-md-7">
-          <p class="text-muted"> {{customer.locality}} </p>
+          <p class="text-muted"> {{c.locality}} </p>
         </div>
         <div class="col">
-          <p class="small mb-0 text-muted">{{customer.phone}}</p>
+          <p class="small mb-0 text-muted">{{c.phone}}</p>
           <p class="small mb-0 text-muted">{{request.user.email}}</p>
           <p class="small mb-0 text-muted">most recent order status</p>
         </div>
       </div>
     </div>
   </div>
-{% if carts %}
-<form action="{% url 'payment' %}" method="GET">
-  <input type="hidden" name="cusid" value="{{customer.id}}" >
+
+<form action="{% url 'payment' %}" method="GET" class="d-inline">
+  <input type="hidden" name="cusid" id="custadd{{forloop.counter}}" value="{{c.get_id}}" >
   <input type="submit" class="btn btn-primary" value="Order Via Cash on delivery" >
 </form>
+{% endfor %}
   <a href="{% url 'order' %}"><input type="submit" class="btn btn-primary" value="PayPal" ></a>
 
 {% endif %}

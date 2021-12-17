@@ -329,6 +329,7 @@ def checkout(request):
 
 # @login_required 
 def payment(request):
+    
     cusid = request.GET['cusid']
     print(cusid)
     customer= Customer.objects.get(id=cusid)
@@ -347,6 +348,8 @@ def order(request):
     
 
 def about(request):
+    # Customer.objects.filter(user=request.user,id=)
+    # print(cuid)
     pass
 
 
