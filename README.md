@@ -13,3 +13,18 @@ Message Framework
     {% endfor %}
     </ul>
     {% endif %}
+    
+# TO get public ip
+    https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
+    // Convert key-value pairs to JSON
+    // https://stackoverflow.com/a/39284735/452587
+    data = data.trim().split('\n').reduce(function(obj, pair) {
+    pair = pair.split('=');
+    return obj[pair[0]] = pair[1], obj;
+    }, {});
+    console.log(data);  
+    });
+    
+    
