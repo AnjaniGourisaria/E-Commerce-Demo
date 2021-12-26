@@ -4,11 +4,12 @@ TO Redirect To login if that feature is only accessd by login https://docs.djang
     @login_required(login_url='/accounts/login/') # @login_requried replace with this in views.py(home/views.py) 
 
 Message Framework
+
     https://docs.djangoproject.com/en/4.0/ref/contrib/messages/
     {% if messages %}
-<ul class="messages">
+    <ul class="messages">
     {% for message in messages %}
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
-</ul>
-{% endif %}
+    </ul>
+    {% endif %}
