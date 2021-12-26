@@ -1,3 +1,4 @@
+#THis Site is A Ecommerce Site TO get work with fix some bug like validate and make it responseive for mobile and desktop User Using the things you can add on to your cravity 
 TO Redirect To login if that feature is only accessd by login https://docs.djangoproject.com/en/4.0/topics/auth/default/
 
     from django.contrib.auth.decorators import login_required #import this to use the feature
@@ -14,7 +15,8 @@ Message Framework
     </ul>
     {% endif %}
     
-# TO get public ip
+TO get public ip
+    
     https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     $.get('https://www.cloudflare.com/cdn-cgi/trace', function(data) {
